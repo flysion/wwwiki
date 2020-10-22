@@ -1,0 +1,42 @@
+#!/usr/bin/env node
+const yargs = require('yargs');
+const process = require('process');
+const pkg = require('./../package.json');
+const server = require('./../src/server.js');
+
+let argv = yargs
+    .usage(`usage: docsite-server <start>`)
+    .command({
+        command: 'start',
+        desc: 'start http server',
+        builder: yargs => yargs.options({
+            port: {
+                alias: 'P',
+                default: 3000,
+                type: 'int'
+            },
+            root: {
+                default: process.cwd(),
+                type: 'string'
+            },
+            username: {
+                alias: 'u',
+                default: null,
+                type: 'string',
+            },
+            password: {
+                alias: 'p',
+                default: '123456',
+                type: 'string',
+            },
+            'only-read': {
+                default: false,
+                type: 'boolean',
+            }
+        }),
+        handler: argv => {
+            server.server(argv);
+        }
+    })
+    .version('\ndocsite version:\n  ' + pkg.version + '\n')
+    .argv;

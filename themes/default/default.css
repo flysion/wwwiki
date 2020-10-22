@@ -1,0 +1,207 @@
+body {
+    margin: 0;
+    padding: 0;
+    color: #333;
+}
+
+a {
+    color: #6bb56b;
+}
+
+#container {
+     width: 1000px; 
+     margin: 0 auto;
+}
+
+#navbar {
+    margin:0;
+    padding: 0 20px;
+    overflow: hidden;
+    background-color: #6bb56b;
+}
+
+#navbar a {
+    text-decoration: none;
+    color: white;
+}
+
+#navbar>li {
+    position: static;
+    float: left;
+    list-style-type: none;
+}
+
+#navbar>li>a {
+    padding:10px 15px;
+    display: inline-block;
+}
+
+#navbar>li>ul {
+    max-height: 550px;
+    overflow: auto;
+    min-width: 150px;
+    padding-left: 0;
+    display: none;
+    position: absolute;
+    background-color: #88ca88;
+    box-shadow: rgb(136, 136, 136) 10px 10px 7px;
+}
+
+#navbar>li>ul>li {
+    list-style-type: none;
+}
+
+#navbar>li>ul>li>a {
+    padding:5px 15px;
+    display: inline-block;
+}
+
+#path {
+    border-bottom: 1px solid #88CA88;
+    padding-left: 0;
+    overflow: hidden;
+}
+
+#path a {
+    text-decoration: none;
+}
+
+#path>li {
+    position: static;
+    float: left;
+    list-style-type: none;
+}
+
+#path>li:last-child>a {
+    color: #ccc;
+}
+
+#path>li>.label, #path>li>.sep {
+    padding:5px;
+    display: inline-block;
+}
+
+#path>li.hover {
+    background-color: #88ca88;
+    color: #fff !important;
+}
+
+#path>li.hover a {
+    color: #fff;
+}
+
+#path>li.hover>.sep {
+    color: #fff;
+}
+
+#path>li>.sep {
+    cursor: pointer;
+    color: #ccc;
+}
+
+#path>li>.sep:before {
+    content: "▶";
+}
+
+#path>li>ul {
+    padding: 10px;
+    max-height: 550px;
+    overflow: auto;
+    min-width: 150px;
+    position: absolute;
+    padding-left: 0;
+    background-color: #88ca88;
+    box-shadow: rgb(136, 136, 136) 10px 10px 7px;
+}
+
+#path>li>ul>li {
+    list-style-type: none;
+}
+
+#path>li>ul>li>a {
+    display: block;
+    padding: 0px 15px;
+}
+
+#list {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    background-color: #eaeaea;
+}
+
+.editor {
+    position: absolute;
+    top:0;
+    left: 0;
+    background-color: white;
+    width: 100vw;
+    display: none;
+}
+
+.editor-toolbar {
+    background-color: #88ca88;
+    height: 40px;
+    line-height: 40px;
+}
+
+.editor-toolbar a {
+    display: inline-block;
+    padding: 0 5px;
+    color: white;
+}
+
+.editor-container {
+    overflow: hidden;
+    height: calc(100vh - 40px);
+}
+
+.editor-tool-save {
+    float: right;
+}
+
+.editor-tool-cancel {
+    float: right;
+}
+
+#content table {
+    border-collapse: collapse;
+    border-spacing: 0;
+    width:100%;
+}
+
+#content table td,#content table th {
+    border: 1px solid #e0e0e0;
+    padding: 5px;
+}
+
+#content table thead {
+    background-color: #eaeaea;
+}
+
+#content code {
+    padding: 0px 3px;
+    margin: 0px 3px;
+    background-color: #ffcfcc;
+    border-radius: 3px;
+    font-family: "Consolas";
+}
+
+#content pre>code  {
+    padding: 0;
+    margin: 0;
+    background-color: transparent;
+    border: 0px;
+    border-radius: 0px;
+}
+
+#content pre {
+    padding: 10px;
+    overflow: auto;
+    background-color: #dddddd;
+}
+
+@media screen and (max-width: 1000px) {
+    #container {
+        width: auto;
+    }
+}
