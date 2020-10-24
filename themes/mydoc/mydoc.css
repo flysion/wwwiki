@@ -8,102 +8,132 @@ a {
     color: #6bb56b;
 }
 
-#container {
+.mydoc-main {
+    height:100vh;
+    overflow-y: auto;
+}
+
+.mydoc-container {
      width: 1000px; 
      margin: 0 auto;
 }
 
-#navbar {
-    margin:0;
-    padding: 0 20px;
-    overflow: hidden;
+.mydoc-navbar {
+    margin: 0;
+    padding: 0;
+    /*overflow: hidden;*/
+    clear:both;
+    width: auto;
+    display: none;
     background-color: #6bb56b;
 }
 
-#navbar a {
+.mydoc-navbar a {
     text-decoration: none;
     color: white;
 }
 
-#navbar>li {
-    position: static;
+.mydoc-navbar>li {
+    position: relative;
     float: left;
     list-style-type: none;
 }
 
-#navbar>li>a {
+.mydoc-navbar:after {
+    content: "";
+    clear: both;
+    display: block;
+}
+
+.mydoc-navbar>li:hover {
+    background-color: #88ca88;
+}
+
+.mydoc-navbar>li:hover>ul {
+    display: block;
+}
+
+.mydoc-navbar>li>a {
     padding:10px 15px;
     display: inline-block;
 }
 
-#navbar>li>ul {
+.mydoc-navbar>li>ul {
     max-height: 550px;
     overflow: auto;
     min-width: 150px;
     padding-left: 0;
+    left: 0;
+    z-index: 9999;
     display: none;
     position: absolute;
     background-color: #88ca88;
     box-shadow: rgb(136, 136, 136) 10px 10px 7px;
 }
 
-#navbar>li>ul>li {
+.mydoc-navbar>li>ul>li {
     list-style-type: none;
 }
 
-#navbar>li>ul>li>a {
+.mydoc-navbar>li>ul>li>a {
     padding:5px 15px;
     display: inline-block;
 }
 
-#path {
+.mydoc-path {
     border-bottom: 1px solid #88CA88;
     padding-left: 0;
-    overflow: hidden;
 }
 
-#path a {
+.mydoc-path a {
     text-decoration: none;
 }
 
-#path>li {
-    position: static;
+.mydoc-path>li {
+    position: relative;
     float: left;
     list-style-type: none;
 }
 
-#path>li:last-child>a {
+.mydoc-path:after {
+    content: "";
+    clear: both;
+    display: block;
+}
+
+.mydoc-path>li:last-child>a {
     color: #ccc;
 }
 
-#path>li>.label, #path>li>.sep {
+.mydoc-path>li>.label, 
+.mydoc-path>li>.sep {
     padding:5px;
     display: inline-block;
 }
 
-#path>li.hover {
+.mydoc-path>li.hover {
     background-color: #88ca88;
     color: #fff !important;
 }
 
-#path>li.hover a {
+.mydoc-path>li.hover a {
     color: #fff;
 }
 
-#path>li.hover>.sep {
+.mydoc-path>li.hover>.sep {
     color: #fff;
 }
 
-#path>li>.sep {
+.mydoc-path>li>.sep {
     cursor: pointer;
     color: #ccc;
 }
 
-#path>li>.sep:before {
+.mydoc-path>li>.sep:before {
     content: "▶";
 }
 
-#path>li>ul {
+.mydoc-path>li>ul {
     padding: 10px;
     max-height: 550px;
     overflow: auto;
@@ -114,22 +144,47 @@ a {
     box-shadow: rgb(136, 136, 136) 10px 10px 7px;
 }
 
-#path>li>ul>li {
+.mydoc-path>li>ul>li {
     list-style-type: none;
 }
 
-#path>li>ul>li>a {
+.mydoc-path>li>ul>li>a {
     display: block;
     padding: 0px 15px;
 }
 
-#list {
-    padding-top: 10px;
-    padding-bottom: 10px;
+.mydoc-list {
+    padding: 10px 15px;
     background-color: #eaeaea;
+    display: none;
+    max-height: 300px;
+    overflow: auto;
 }
 
-.editor {
+.mydoc-list>li {
+    list-style-type: none;
+}
+
+.mydoc-list>li>.icon {
+    display: inline-block;
+    margin-right: 10px;
+    color: #999;
+}
+
+/* http://www.fontawesome.com.cn/faicons/ */
+.mydoc-list>li.folder>.icon:before { content: "\f114"; }
+.mydoc-list>li.file>.icon:before { content: "\f016"; }
+.mydoc-list>li.file-md>.icon:before,
+.mydoc-list>li.file-txt>.icon:before { content: "\f0f6"; }
+.mydoc-list>li.file-pdf>.icon:before { content: "\f1c1"; }
+.mydoc-list>li.file-png>.icon:before,
+.mydoc-list>li.file-jpg>.icon:before,
+.mydoc-list>li.file-jpeg>.icon:before,
+.mydoc-list>li.file-gif>.icon:before { content: "\f1c5"; }
+.mydoc-list>li.file-pptx>.icon:before { content: "\f1c4"; }
+.mydoc-list>li.file-xlsx>.icon:before { content: "\f1c3"; }
+
+.mydoc-editor {
     position: absolute;
     top:0;
     left: 0;
@@ -138,47 +193,47 @@ a {
     display: none;
 }
 
-.editor-toolbar {
+.mydoc-editor-toolbar {
     background-color: #88ca88;
     height: 40px;
     line-height: 40px;
 }
 
-.editor-toolbar a {
+.mydoc-editor-toolbar a {
     display: inline-block;
     padding: 0 5px;
     color: white;
 }
 
-.editor-container {
+.mydoc-editor-container {
     overflow: hidden;
     height: calc(100vh - 40px);
 }
 
-.editor-tool-save {
+.mydoc-editor-tool-save {
     float: right;
 }
 
-.editor-tool-cancel {
+.mydoc-editor-tool-cancel {
     float: right;
 }
 
-#content table {
+.mydoc-content table {
     border-collapse: collapse;
     border-spacing: 0;
     width:100%;
 }
 
-#content table td,#content table th {
+.mydoc-content table td,.mydoc-content table th {
     border: 1px solid #e0e0e0;
     padding: 5px;
 }
 
-#content table thead {
+.mydoc-content table thead {
     background-color: #eaeaea;
 }
 
-#content code {
+.mydoc-content code {
     padding: 0px 3px;
     margin: 0px 3px;
     background-color: #ffcfcc;
@@ -186,7 +241,7 @@ a {
     font-family: "Consolas";
 }
 
-#content pre>code  {
+.mydoc-content pre>code  {
     padding: 0;
     margin: 0;
     background-color: transparent;
@@ -194,14 +249,14 @@ a {
     border-radius: 0px;
 }
 
-#content pre {
+.mydoc-content pre {
     padding: 10px;
     overflow: auto;
     background-color: #dddddd;
 }
 
 @media screen and (max-width: 1000px) {
-    #container {
+    .mydoc-container {
         width: auto;
     }
 }
