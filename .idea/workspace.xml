@@ -1,0 +1,851 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="995ea61a-26e9-4ff0-9f20-3ae6550e0615" name="Default" comment="">
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/watcherTasks.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/lib/Path.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/lib/create_element.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/lib/is_array.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/lib/is_object.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/lib/request.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/mydoc/index.html" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/mydoc/plugins/content_index/index.css" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/mydoc/plugins/content_index/index.js" />
+      <change beforePath="$PROJECT_DIR$/bin/docsite-server" afterPath="$PROJECT_DIR$/bin/docsite" />
+      <change beforePath="$PROJECT_DIR$/lib/docsite-sdk.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/lib/font-awesome-4.7.0/HELP-US-OUT.txt" afterPath="$PROJECT_DIR$/dist/font-awesome-4.7.0/HELP-US-OUT.txt" />
+      <change beforePath="$PROJECT_DIR$/lib/font-awesome-4.7.0/css/font-awesome.css" afterPath="$PROJECT_DIR$/dist/font-awesome-4.7.0/css/font-awesome.css" />
+      <change beforePath="$PROJECT_DIR$/lib/font-awesome-4.7.0/css/font-awesome.min.css" afterPath="$PROJECT_DIR$/dist/font-awesome-4.7.0/css/font-awesome.min.css" />
+      <change beforePath="$PROJECT_DIR$/lib/font-awesome-4.7.0/fonts/FontAwesome.otf" afterPath="$PROJECT_DIR$/dist/font-awesome-4.7.0/fonts/FontAwesome.otf" />
+      <change beforePath="$PROJECT_DIR$/lib/font-awesome-4.7.0/fonts/fontawesome-webfont.eot" afterPath="$PROJECT_DIR$/dist/font-awesome-4.7.0/fonts/fontawesome-webfont.eot" />
+      <change beforePath="$PROJECT_DIR$/lib/font-awesome-4.7.0/fonts/fontawesome-webfont.svg" afterPath="$PROJECT_DIR$/dist/font-awesome-4.7.0/fonts/fontawesome-webfont.svg" />
+      <change beforePath="$PROJECT_DIR$/lib/font-awesome-4.7.0/fonts/fontawesome-webfont.ttf" afterPath="$PROJECT_DIR$/dist/font-awesome-4.7.0/fonts/fontawesome-webfont.ttf" />
+      <change beforePath="$PROJECT_DIR$/lib/font-awesome-4.7.0/fonts/fontawesome-webfont.woff" afterPath="$PROJECT_DIR$/dist/font-awesome-4.7.0/fonts/fontawesome-webfont.woff" />
+      <change beforePath="$PROJECT_DIR$/lib/font-awesome-4.7.0/fonts/fontawesome-webfont.woff2" afterPath="$PROJECT_DIR$/dist/font-awesome-4.7.0/fonts/fontawesome-webfont.woff2" />
+      <change beforePath="$PROJECT_DIR$/lib/font-awesome-4.7.0/less/animated.less" afterPath="$PROJECT_DIR$/dist/font-awesome-4.7.0/less/animated.less" />
+      <change beforePath="$PROJECT_DIR$/lib/font-awesome-4.7.0/less/bordered-pulled.less" afterPath="$PROJECT_DIR$/dist/font-awesome-4.7.0/less/bordered-pulled.less" />
+      <change beforePath="$PROJECT_DIR$/lib/font-awesome-4.7.0/less/core.less" afterPath="$PROJECT_DIR$/dist/font-awesome-4.7.0/less/core.less" />
+      <change beforePath="$PROJECT_DIR$/lib/font-awesome-4.7.0/less/fixed-width.less" afterPath="$PROJECT_DIR$/dist/font-awesome-4.7.0/less/fixed-width.less" />
+      <change beforePath="$PROJECT_DIR$/lib/font-awesome-4.7.0/less/font-awesome.less" afterPath="$PROJECT_DIR$/dist/font-awesome-4.7.0/less/font-awesome.less" />
+      <change beforePath="$PROJECT_DIR$/lib/font-awesome-4.7.0/less/icons.less" afterPath="$PROJECT_DIR$/dist/font-awesome-4.7.0/less/icons.less" />
+      <change beforePath="$PROJECT_DIR$/lib/font-awesome-4.7.0/less/larger.less" afterPath="$PROJECT_DIR$/dist/font-awesome-4.7.0/less/larger.less" />
+      <change beforePath="$PROJECT_DIR$/lib/font-awesome-4.7.0/less/list.less" afterPath="$PROJECT_DIR$/dist/font-awesome-4.7.0/less/list.less" />
+      <change beforePath="$PROJECT_DIR$/lib/font-awesome-4.7.0/less/mixins.less" afterPath="$PROJECT_DIR$/dist/font-awesome-4.7.0/less/mixins.less" />
+      <change beforePath="$PROJECT_DIR$/lib/font-awesome-4.7.0/less/path.less" afterPath="$PROJECT_DIR$/dist/font-awesome-4.7.0/less/path.less" />
+      <change beforePath="$PROJECT_DIR$/lib/font-awesome-4.7.0/less/rotated-flipped.less" afterPath="$PROJECT_DIR$/dist/font-awesome-4.7.0/less/rotated-flipped.less" />
+      <change beforePath="$PROJECT_DIR$/lib/font-awesome-4.7.0/less/screen-reader.less" afterPath="$PROJECT_DIR$/dist/font-awesome-4.7.0/less/screen-reader.less" />
+      <change beforePath="$PROJECT_DIR$/lib/font-awesome-4.7.0/less/stacked.less" afterPath="$PROJECT_DIR$/dist/font-awesome-4.7.0/less/stacked.less" />
+      <change beforePath="$PROJECT_DIR$/lib/font-awesome-4.7.0/less/variables.less" afterPath="$PROJECT_DIR$/dist/font-awesome-4.7.0/less/variables.less" />
+      <change beforePath="$PROJECT_DIR$/lib/font-awesome-4.7.0/scss/_animated.scss" afterPath="$PROJECT_DIR$/dist/font-awesome-4.7.0/scss/_animated.scss" />
+      <change beforePath="$PROJECT_DIR$/lib/font-awesome-4.7.0/scss/_bordered-pulled.scss" afterPath="$PROJECT_DIR$/dist/font-awesome-4.7.0/scss/_bordered-pulled.scss" />
+      <change beforePath="$PROJECT_DIR$/lib/font-awesome-4.7.0/scss/_core.scss" afterPath="$PROJECT_DIR$/dist/font-awesome-4.7.0/scss/_core.scss" />
+      <change beforePath="$PROJECT_DIR$/lib/font-awesome-4.7.0/scss/_fixed-width.scss" afterPath="$PROJECT_DIR$/dist/font-awesome-4.7.0/scss/_fixed-width.scss" />
+      <change beforePath="$PROJECT_DIR$/lib/font-awesome-4.7.0/scss/_icons.scss" afterPath="$PROJECT_DIR$/dist/font-awesome-4.7.0/scss/_icons.scss" />
+      <change beforePath="$PROJECT_DIR$/lib/font-awesome-4.7.0/scss/_larger.scss" afterPath="$PROJECT_DIR$/dist/font-awesome-4.7.0/scss/_larger.scss" />
+      <change beforePath="$PROJECT_DIR$/lib/font-awesome-4.7.0/scss/_list.scss" afterPath="$PROJECT_DIR$/dist/font-awesome-4.7.0/scss/_list.scss" />
+      <change beforePath="$PROJECT_DIR$/lib/font-awesome-4.7.0/scss/_mixins.scss" afterPath="$PROJECT_DIR$/dist/font-awesome-4.7.0/scss/_mixins.scss" />
+      <change beforePath="$PROJECT_DIR$/lib/font-awesome-4.7.0/scss/_path.scss" afterPath="$PROJECT_DIR$/dist/font-awesome-4.7.0/scss/_path.scss" />
+      <change beforePath="$PROJECT_DIR$/lib/font-awesome-4.7.0/scss/_rotated-flipped.scss" afterPath="$PROJECT_DIR$/dist/font-awesome-4.7.0/scss/_rotated-flipped.scss" />
+      <change beforePath="$PROJECT_DIR$/lib/font-awesome-4.7.0/scss/_screen-reader.scss" afterPath="$PROJECT_DIR$/dist/font-awesome-4.7.0/scss/_screen-reader.scss" />
+      <change beforePath="$PROJECT_DIR$/lib/font-awesome-4.7.0/scss/_stacked.scss" afterPath="$PROJECT_DIR$/dist/font-awesome-4.7.0/scss/_stacked.scss" />
+      <change beforePath="$PROJECT_DIR$/lib/font-awesome-4.7.0/scss/_variables.scss" afterPath="$PROJECT_DIR$/dist/font-awesome-4.7.0/scss/_variables.scss" />
+      <change beforePath="$PROJECT_DIR$/lib/font-awesome-4.7.0/scss/font-awesome.scss" afterPath="$PROJECT_DIR$/dist/font-awesome-4.7.0/scss/font-awesome.scss" />
+      <change beforePath="$PROJECT_DIR$/package.json" afterPath="$PROJECT_DIR$/package.json" />
+      <change beforePath="$PROJECT_DIR$/src/FileSystem.js" afterPath="$PROJECT_DIR$/src/fileSystem.js" />
+      <change beforePath="$PROJECT_DIR$/src/server.js" afterPath="$PROJECT_DIR$/src/server.js" />
+      <change beforePath="$PROJECT_DIR$/themes/mydoc/mydoc.css" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/themes/mydoc/mydoc.js" afterPath="" />
+    </list>
+    <ignored path="$PROJECT_DIR$/.tmp/" />
+    <ignored path="$PROJECT_DIR$/temp/" />
+    <ignored path="$PROJECT_DIR$/tmp/" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="TRACKING_ENABLED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf>
+      <file leaf-file-name="index.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/mydoc/index.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-1752">
+              <caret line="100" column="30" lean-forward="false" selection-start-line="100" selection-start-column="30" selection-end-line="100" selection-end-column="39" />
+              <folding>
+                <element signature="e#0#41#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.css" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/mydoc/plugins/content_index/index.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="459">
+              <caret line="27" column="16" lean-forward="false" selection-start-line="27" selection-start-column="8" selection-end-line="27" selection-end-column="16" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/mydoc/plugins/content_index/index.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="575">
+              <caret line="100" column="44" lean-forward="false" selection-start-line="100" selection-start-column="36" selection-end-line="100" selection-end-column="44" />
+              <folding>
+                <element signature="e#0#47#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/mydoc/index.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="534">
+              <caret line="111" column="43" lean-forward="false" selection-start-line="111" selection-start-column="43" selection-end-line="111" selection-end-column="43" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="create_element.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/lib/create_element.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="486">
+              <caret line="72" column="20" lean-forward="true" selection-start-line="72" selection-start-column="20" selection-end-line="72" selection-end-column="20" />
+              <folding>
+                <element signature="e#0#33#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Path.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/lib/Path.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-105">
+              <caret line="38" column="53" lean-forward="false" selection-start-line="38" selection-start-column="53" selection-end-line="38" selection-end-column="53" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>options</find>
+      <find>renderContent</find>
+      <find>substr</find>
+      <find>only_dir</find>
+      <find>eContentIndex</find>
+      <find>new Path</find>
+      <find>rstrip</find>
+      <find>path</find>
+      <find>abs</find>
+      <find>pathInfo</find>
+      <find>item</find>
+      <find>ext()</find>
+      <find>toLowerCase</find>
+      <find>filename</find>
+      <find>renderList</find>
+      <find>pathChanged</find>
+      <find>content_tree</find>
+      <find>pathObj</find>
+      <find>prevNode</find>
+      <find>sib</find>
+      <find>sibling</find>
+      <find>eButton</find>
+      <find>$e</find>
+      <find>list</find>
+      <find>$el</find>
+      <find>$eMain</find>
+      <find>dir</find>
+      <find>isDir</find>
+      <find>1000px</find>
+      <find>depth</find>
+    </findStrings>
+    <replaceStrings>
+      <replace>jq</replace>
+      <replace>&quot;</replace>
+      <replace>helper.merge</replace>
+      <replace>$</replace>
+      <replace>createElement</replace>
+      <replace>\$</replace>
+      <replace>_isRoot</replace>
+      <replace>\$.extend</replace>
+      <replace>\$options</replace>
+      <replace>\$contentEl</replace>
+      <replace>isDirectory</replace>
+      <replace>pathChanged</replace>
+      <replace>__</replace>
+      <replace>render\u$1</replace>
+      <replace>item</replace>
+      <replace>pathObj =&gt;</replace>
+      <replace>this.\$event</replace>
+      <replace>btn</replace>
+      <replace>chains</replace>
+      <replace>info</replace>
+      <replace>pathchange</replace>
+      <replace>900px</replace>
+      <replace>prev</replace>
+    </replaceStrings>
+    <dirStrings>
+      <dir>Z:\wwwroot\docsite\src</dir>
+    </dirStrings>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/src/mydoc/webpack.config.js" />
+        <option value="$PROJECT_DIR$/src/mydoc/dist/test.html" />
+        <option value="$PROJECT_DIR$/src/mydoc/app.js" />
+        <option value="$PROJECT_DIR$/mydoc.webpack.config.js" />
+        <option value="$PROJECT_DIR$/dist/test.html" />
+        <option value="$PROJECT_DIR$/src/helpers.js" />
+        <option value="$PROJECT_DIR$/src/request.js" />
+        <option value="$PROJECT_DIR$/mydoc/app.js" />
+        <option value="$PROJECT_DIR$/mydoc/main.css" />
+        <option value="$PROJECT_DIR$/bin/docsite" />
+        <option value="$PROJECT_DIR$/dist/mydoc/index.html" />
+        <option value="$PROJECT_DIR$/lib/Dispatcher.js" />
+        <option value="$PROJECT_DIR$/package.json" />
+        <option value="$PROJECT_DIR$/lib/helpers.js" />
+        <option value="$PROJECT_DIR$/lib/isarray.js" />
+        <option value="$PROJECT_DIR$/lib/isobject.js" />
+        <option value="$PROJECT_DIR$/lib/is_object.js" />
+        <option value="$PROJECT_DIR$/lib/request.js" />
+        <option value="$PROJECT_DIR$/mydoc/plugins/content_index.js" />
+        <option value="$PROJECT_DIR$/webpack.config.js" />
+        <option value="$PROJECT_DIR$/src/server.js" />
+        <option value="$PROJECT_DIR$/src/fileSystem.js" />
+        <option value="$PROJECT_DIR$/lib/Path.js" />
+        <option value="$PROJECT_DIR$/lib/create_element.js" />
+        <option value="$PROJECT_DIR$/mydoc/index.js" />
+        <option value="$PROJECT_DIR$/mydoc/plugins/content_index/index.css" />
+        <option value="$PROJECT_DIR$/mydoc/plugins/content_index/index.js" />
+        <option value="$PROJECT_DIR$/mydoc/index.html" />
+      </list>
+    </option>
+  </component>
+  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER">
+    <package-json value="$PROJECT_DIR$/package.json" />
+  </component>
+  <component name="JsFlowSettings">
+    <service-enabled>true</service-enabled>
+    <exe-path />
+    <other-services-enabled>true</other-services-enabled>
+    <auto-save>true</auto-save>
+  </component>
+  <component name="JsGulpfileManager">
+    <detection-done>true</detection-done>
+    <sorting>DEFINITION_ORDER</sorting>
+  </component>
+  <component name="NodeModulesDirectoryManager">
+    <handled-path value="$PROJECT_DIR$/node_modules" />
+  </component>
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="205" />
+    <option name="y" value="180" />
+    <option name="width" value="1936" />
+    <option name="height" value="1096" />
+  </component>
+  <component name="ProjectView">
+    <navigator currentView="ProjectPane" proportions="" version="1">
+      <flattenPackages />
+      <showMembers />
+      <showModules />
+      <showLibraryContents />
+      <hideEmptyPackages />
+      <abbreviatePackageNames />
+      <autoscrollToSource />
+      <autoscrollFromSource />
+      <sortByType />
+      <manualOrder />
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="Scope" />
+      <pane id="Scratches" />
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="docsite" type="b2602c69:ProjectViewProjectNode" />
+              <item name="docsite" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="docsite" type="b2602c69:ProjectViewProjectNode" />
+              <item name="docsite" type="462c0819:PsiDirectoryNode" />
+              <item name="bin" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="docsite" type="b2602c69:ProjectViewProjectNode" />
+              <item name="docsite" type="462c0819:PsiDirectoryNode" />
+              <item name="dist" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="docsite" type="b2602c69:ProjectViewProjectNode" />
+              <item name="docsite" type="462c0819:PsiDirectoryNode" />
+              <item name="dist" type="462c0819:PsiDirectoryNode" />
+              <item name="mydoc" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="docsite" type="b2602c69:ProjectViewProjectNode" />
+              <item name="docsite" type="462c0819:PsiDirectoryNode" />
+              <item name="dist" type="462c0819:PsiDirectoryNode" />
+              <item name="mydoc" type="462c0819:PsiDirectoryNode" />
+              <item name="plugins" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="docsite" type="b2602c69:ProjectViewProjectNode" />
+              <item name="docsite" type="462c0819:PsiDirectoryNode" />
+              <item name="lib" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="docsite" type="b2602c69:ProjectViewProjectNode" />
+              <item name="docsite" type="462c0819:PsiDirectoryNode" />
+              <item name="mydoc" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="docsite" type="b2602c69:ProjectViewProjectNode" />
+              <item name="docsite" type="462c0819:PsiDirectoryNode" />
+              <item name="mydoc" type="462c0819:PsiDirectoryNode" />
+              <item name="plugins" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="docsite" type="b2602c69:ProjectViewProjectNode" />
+              <item name="docsite" type="462c0819:PsiDirectoryNode" />
+              <item name="mydoc" type="462c0819:PsiDirectoryNode" />
+              <item name="plugins" type="462c0819:PsiDirectoryNode" />
+              <item name="content_index" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="docsite" type="b2602c69:ProjectViewProjectNode" />
+              <item name="docsite" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="HbShouldOpenHtmlAsHb" value="" />
+    <property name="settings.editor.selected.configurable" value="Settings.JavaScript" />
+    <property name="JavaScriptWeakerCompletionTypeGuess" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="Z:\wwwroot\docsite\mydoc" />
+      <recent name="Z:\wwwroot\docsite\lib\themes\mydoc" />
+      <recent name="Z:\wwwroot\docsite\lib" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="Z:\wwwroot\docsite\mydoc\plugins\content_index" />
+      <recent name="Z:\wwwroot\docsite\dist\mydoc" />
+      <recent name="Z:\wwwroot\docsite\dist" />
+      <recent name="Z:\wwwroot\docsite\lib" />
+      <recent name="Z:\wwwroot\docsite" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="ShelveChangesManager" show_recycled="false">
+    <option name="remove_strategy" value="false" />
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="995ea61a-26e9-4ff0-9f20-3ae6550e0615" name="Default" comment="" />
+      <created>1603782533704</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1603782533704</updated>
+      <workItem from="1603782535242" duration="117296000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="117296000" />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <editor active="true" />
+    <layout>
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="npm" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="TypeScript" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1765625" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32946146" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+    </layout>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager />
+    <watches-manager />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/lib/request.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="9" column="27" lean-forward="true" selection-start-line="9" selection-start-column="27" selection-end-line="9" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/docsite-sdk.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="747">
+          <caret line="135" column="5" lean-forward="true" selection-start-line="110" selection-start-column="33" selection-end-line="135" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/helpers.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="884">
+          <caret line="52" column="23" lean-forward="true" selection-start-line="52" selection-start-column="23" selection-end-line="52" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dist/mydoc.min.js.LICENSE.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dist/font-awesome-4.7.0/less/icons.less">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="22" column="60" lean-forward="true" selection-start-line="22" selection-start-column="60" selection-end-line="22" selection-end-column="60" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dist/font-awesome-4.7.0/css/font-awesome.min.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dist/font-awesome-4.7.0/css/font-awesome.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="30" column="8" lean-forward="false" selection-start-line="30" selection-start-column="8" selection-end-line="30" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dist/font-awesome-4.7.0/less/core.less">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="12" column="0" lean-forward="false" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/node_modules/font-awesome-webpack/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="1" column="0" lean-forward="true" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/package-lock.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/node_modules/jquery/dist/jquery.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-183244">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dist/font-awesome-4.7.0/HELP-US-OUT.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dist/mydoc.min.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="277">
+          <caret line="1" column="851495" lean-forward="false" selection-start-line="1" selection-start-column="851495" selection-end-line="1" selection-end-column="851495" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mydoc/main.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="577">
+          <caret line="135" column="29" lean-forward="false" selection-start-line="135" selection-start-column="29" selection-end-line="135" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/node_modules/@types/node/globals.d.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="562" column="8" lean-forward="false" selection-start-line="562" selection-start-column="8" selection-end-line="562" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/node_modules/highlightjs/highlight.pack.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-405122">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="n#!!doc" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/node_modules/marked/src/marked.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-3775">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/node_modules/marked/lib/marked.esm.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="546">
+          <caret line="2542" column="0" lean-forward="false" selection-start-line="2542" selection-start-column="0" selection-end-line="2542" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dist/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="38" lean-forward="true" selection-start-line="0" selection-start-column="38" selection-end-line="0" selection-end-column="38" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/themes/mydoc/mydoc.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mydoc/mydoc.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dist/mydoc/mydoc.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-663">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="277" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/themes/mydoc/mydoc.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="599">
+          <caret line="88" column="31" lean-forward="false" selection-start-line="88" selection-start-column="31" selection-end-line="88" selection-end-column="36" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dist/mydoc/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="20" column="0" lean-forward="true" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bin/docsite">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="305">
+          <caret line="37" column="26" lean-forward="true" selection-start-line="37" selection-start-column="26" selection-end-line="37" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/node_modules/@types/node/fs.d.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="975" column="20" lean-forward="false" selection-start-line="975" selection-start-column="20" selection-end-line="975" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/node_modules/webpack/lib/config/browserslistTargetHandler.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="782">
+          <caret line="172" column="4" lean-forward="false" selection-start-line="172" selection-start-column="4" selection-end-line="172" selection-end-column="4" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/Dispatcher.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="0" lean-forward="true" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/node_modules/events/events.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="9" column="2" lean-forward="true" selection-start-line="8" selection-start-column="24" selection-end-line="9" selection-end-column="2" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/node_modules/@types/node/events.d.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="758">
+          <caret line="81" column="25" lean-forward="false" selection-start-line="81" selection-start-column="13" selection-end-line="81" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/node_modules/isobject/index.cjs.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dist/mydoc/mydoc.min.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="66" lean-forward="true" selection-start-line="0" selection-start-column="66" selection-end-line="0" selection-end-column="66" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/package.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="459">
+          <caret line="27" column="0" lean-forward="false" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/node_modules/isarray/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="4" selection-end-column="2" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/node_modules/isobject/index.d.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="17" lean-forward="false" selection-start-line="0" selection-start-column="17" selection-end-line="0" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/node_modules/isobject/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="0" lean-forward="false" selection-start-line="7" selection-start-column="0" selection-end-line="9" selection-end-column="2" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/is_array.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="23" lean-forward="false" selection-start-line="6" selection-start-column="23" selection-end-line="6" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/is_object.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="23" lean-forward="false" selection-start-line="0" selection-start-column="23" selection-end-line="0" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/request.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="79" column="58" lean-forward="true" selection-start-line="79" selection-start-column="58" selection-end-line="79" selection-end-column="58" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/webpack.config.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="476">
+          <caret line="28" column="33" lean-forward="true" selection-start-line="28" selection-start-column="33" selection-end-line="28" selection-end-column="33" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/server.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-557">
+          <caret line="47" column="10" lean-forward="true" selection-start-line="47" selection-start-column="10" selection-end-line="47" selection-end-column="10" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/fileSystem.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="578">
+          <caret line="34" column="9" lean-forward="true" selection-start-line="34" selection-start-column="9" selection-end-line="34" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/node_modules/webpack/lib/CodeGenerationResults.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="629">
+          <caret line="40" column="37" lean-forward="true" selection-start-line="40" selection-start-column="37" selection-end-line="40" selection-end-column="37" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dist/mydoc/plugins/content_index.min.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="48" lean-forward="false" selection-start-line="0" selection-start-column="48" selection-end-line="0" selection-end-column="48" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/Path.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-105">
+          <caret line="38" column="53" lean-forward="false" selection-start-line="38" selection-start-column="53" selection-end-line="38" selection-end-column="53" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mydoc/plugins/content_index/index.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="459">
+          <caret line="27" column="16" lean-forward="false" selection-start-line="27" selection-start-column="8" selection-end-line="27" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mydoc/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1752">
+          <caret line="100" column="30" lean-forward="false" selection-start-line="100" selection-start-column="30" selection-end-line="100" selection-end-column="39" />
+          <folding>
+            <element signature="e#0#41#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mydoc/plugins/content_index/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="575">
+          <caret line="100" column="44" lean-forward="false" selection-start-line="100" selection-start-column="36" selection-end-line="100" selection-end-column="44" />
+          <folding>
+            <element signature="e#0#47#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/create_element.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="486">
+          <caret line="72" column="20" lean-forward="true" selection-start-line="72" selection-start-column="20" selection-end-line="72" selection-end-column="20" />
+          <folding>
+            <element signature="e#0#33#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mydoc/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="534">
+          <caret line="111" column="43" lean-forward="false" selection-start-line="111" selection-start-column="43" selection-end-line="111" selection-end-column="43" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>

@@ -2,13 +2,15 @@
 const yargs = require('yargs');
 const process = require('process');
 const pkg = require('./../package.json');
-const server = require('./../src/server.js');
+const server = require('../src/server.js');
+const fs = require('fs');
+const path = require('path');
 
 let argv = yargs
     .usage(`usage: docsite-server <start>`)
     .command({
         command: 'start',
-        desc: 'start http server',
+        desc: '启动HTTP服务',
         builder: yargs => yargs.options({
             port: {
                 alias: 'P',
@@ -40,6 +42,23 @@ let argv = yargs
         }),
         handler: argv => {
             server.start(argv);
+        }
+    })
+    .command({
+        command: 'init',
+        desc: '初始化项目',
+        builder: yargs => yargs.options({
+            style: {
+                default: 'mydoc',
+                type: 'string'
+            },
+            'index-file': {
+                default: 'index.html',
+                type: 'string'
+            },
+        }),
+        handler: argv => {
+            fs.copyFileSync(path.join(__dirname, `../dist/${argv.style}/index.html`), argv.indexFile);
         }
     })
     .version('\ndocsite version:\n  ' + pkg.version + '\n')

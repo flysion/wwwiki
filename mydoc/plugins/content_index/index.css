@@ -1,0 +1,31 @@
+.mydoc-content-index-0 {
+    position: fixed;
+    right: 10px;
+    max-height: calc(100vh - 120px);
+    overflow: auto;
+}
+
+.mydoc-content-index {
+    padding: 10px;
+    background-color: #eee;
+    margin: 15px 10px 0 10px;
+}
+
+.mydoc-content-index .num {
+    margin-right: 5px;
+    color: #ccc;
+    font-style: italic;
+}
+
+.mydoc-content-index ul {
+    list-style-type: none;
+    padding:0;
+    margin:0;
+}
+
+@media screen and (max-width:900px) {
+    .mydoc-content-index-0 {
+        position: unset;
+        max-height: unset;
+    }
+}
