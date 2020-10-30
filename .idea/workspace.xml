@@ -10,7 +10,6 @@
       <change beforePath="" afterPath="$PROJECT_DIR$/lib/is_array.js" />
       <change beforePath="" afterPath="$PROJECT_DIR$/lib/is_object.js" />
       <change beforePath="" afterPath="$PROJECT_DIR$/lib/request.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/mydoc/index.html" />
       <change beforePath="" afterPath="$PROJECT_DIR$/mydoc/plugins/content_index/index.css" />
       <change beforePath="" afterPath="$PROJECT_DIR$/mydoc/plugins/content_index/index.js" />
       <change beforePath="$PROJECT_DIR$/bin/docsite-server" afterPath="$PROJECT_DIR$/bin/docsite" />
@@ -52,6 +51,7 @@
       <change beforePath="$PROJECT_DIR$/lib/font-awesome-4.7.0/scss/_stacked.scss" afterPath="$PROJECT_DIR$/dist/font-awesome-4.7.0/scss/_stacked.scss" />
       <change beforePath="$PROJECT_DIR$/lib/font-awesome-4.7.0/scss/_variables.scss" afterPath="$PROJECT_DIR$/dist/font-awesome-4.7.0/scss/_variables.scss" />
       <change beforePath="$PROJECT_DIR$/lib/font-awesome-4.7.0/scss/font-awesome.scss" afterPath="$PROJECT_DIR$/dist/font-awesome-4.7.0/scss/font-awesome.scss" />
+      <change beforePath="$PROJECT_DIR$/mydoc/index.html" afterPath="$PROJECT_DIR$/mydoc/index.html" />
       <change beforePath="$PROJECT_DIR$/package.json" afterPath="$PROJECT_DIR$/package.json" />
       <change beforePath="$PROJECT_DIR$/src/FileSystem.js" afterPath="$PROJECT_DIR$/src/fileSystem.js" />
       <change beforePath="$PROJECT_DIR$/src/server.js" afterPath="$PROJECT_DIR$/src/server.js" />
@@ -107,8 +107,8 @@
       <file leaf-file-name="index.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/mydoc/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="534">
-              <caret line="111" column="43" lean-forward="false" selection-start-line="111" selection-start-column="43" selection-end-line="111" selection-end-column="43" />
+            <state relative-caret-position="517">
+              <caret line="110" column="52" lean-forward="false" selection-start-line="110" selection-start-column="52" selection-end-line="110" selection-end-column="52" />
               <folding />
             </state>
           </provider>
@@ -388,12 +388,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1603782533704</updated>
-      <workItem from="1603782535242" duration="117296000" />
+      <workItem from="1603782535242" duration="117428000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="117296000" />
+    <option name="totallyTimeSpent" value="117428000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -841,8 +841,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/mydoc/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="534">
-          <caret line="111" column="43" lean-forward="false" selection-start-line="111" selection-start-column="43" selection-end-line="111" selection-end-column="43" />
+        <state relative-caret-position="517">
+          <caret line="110" column="52" lean-forward="false" selection-start-line="110" selection-start-column="52" selection-end-line="110" selection-end-column="52" />
           <folding />
         </state>
       </provider>
