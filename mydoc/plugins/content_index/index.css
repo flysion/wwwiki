@@ -1,14 +1,19 @@
-.mydoc-content-index-0 {
-    position: fixed;
-    right: 10px;
-    max-height: calc(100vh - 120px);
-    overflow: auto;
-}
-
 .mydoc-content-index {
     padding: 10px;
     background-color: #eee;
-    margin: 15px 10px 0 10px;
+    margin: 15px 0 0 0;
+}
+
+.mydoc-content-index.float {
+    position: fixed;
+    right: 0;
+    max-height: 100vh;
+    max-width: 300px;
+    overflow: auto;
+    margin: 0;
+    padding-right:20px;
+    z-index: 7000;
+    /*top: 30px;*/
 }
 
 .mydoc-content-index .num {
@@ -24,8 +29,11 @@
 }
 
 @media screen and (max-width:900px) {
-    .mydoc-content-index-0 {
+    .mydoc-content-index.float {
         position: unset;
         max-height: unset;
+        max-width: unset;
     }
+
+    .mydoc-content-index {margin-left:10px;margin-right:10px;}
 }

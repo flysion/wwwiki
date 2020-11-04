@@ -10,8 +10,6 @@
       <change beforePath="" afterPath="$PROJECT_DIR$/lib/is_array.js" />
       <change beforePath="" afterPath="$PROJECT_DIR$/lib/is_object.js" />
       <change beforePath="" afterPath="$PROJECT_DIR$/lib/request.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/mydoc/plugins/content_index/index.css" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/mydoc/plugins/content_index/index.js" />
       <change beforePath="$PROJECT_DIR$/bin/docsite-server" afterPath="$PROJECT_DIR$/bin/docsite" />
       <change beforePath="$PROJECT_DIR$/lib/docsite-sdk.js" afterPath="" />
       <change beforePath="$PROJECT_DIR$/lib/font-awesome-4.7.0/HELP-US-OUT.txt" afterPath="$PROJECT_DIR$/dist/font-awesome-4.7.0/HELP-US-OUT.txt" />
@@ -52,6 +50,9 @@
       <change beforePath="$PROJECT_DIR$/lib/font-awesome-4.7.0/scss/_variables.scss" afterPath="$PROJECT_DIR$/dist/font-awesome-4.7.0/scss/_variables.scss" />
       <change beforePath="$PROJECT_DIR$/lib/font-awesome-4.7.0/scss/font-awesome.scss" afterPath="$PROJECT_DIR$/dist/font-awesome-4.7.0/scss/font-awesome.scss" />
       <change beforePath="$PROJECT_DIR$/mydoc/index.html" afterPath="$PROJECT_DIR$/mydoc/index.html" />
+      <change beforePath="$PROJECT_DIR$/mydoc/index.js" afterPath="$PROJECT_DIR$/mydoc/index.js" />
+      <change beforePath="$PROJECT_DIR$/mydoc/plugins/content_index/index.css" afterPath="$PROJECT_DIR$/mydoc/plugins/content_index/index.css" />
+      <change beforePath="$PROJECT_DIR$/mydoc/plugins/content_index/index.js" afterPath="$PROJECT_DIR$/mydoc/plugins/content_index/index.js" />
       <change beforePath="$PROJECT_DIR$/package.json" afterPath="$PROJECT_DIR$/package.json" />
       <change beforePath="$PROJECT_DIR$/src/FileSystem.js" afterPath="$PROJECT_DIR$/src/fileSystem.js" />
       <change beforePath="$PROJECT_DIR$/src/server.js" afterPath="$PROJECT_DIR$/src/server.js" />
@@ -73,8 +74,8 @@
       <file leaf-file-name="index.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/mydoc/index.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1752">
-              <caret line="100" column="30" lean-forward="false" selection-start-line="100" selection-start-column="30" selection-end-line="100" selection-end-column="39" />
+            <state relative-caret-position="677">
+              <caret line="564" column="29" lean-forward="false" selection-start-line="564" selection-start-column="29" selection-end-line="564" selection-end-column="29" />
               <folding>
                 <element signature="e#0#41#0" expanded="true" />
               </folding>
@@ -85,18 +86,18 @@
       <file leaf-file-name="index.css" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/mydoc/plugins/content_index/index.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="459">
-              <caret line="27" column="16" lean-forward="false" selection-start-line="27" selection-start-column="8" selection-end-line="27" selection-end-column="16" />
+            <state relative-caret-position="238">
+              <caret line="14" column="18" lean-forward="false" selection-start-line="14" selection-start-column="18" selection-end-line="14" selection-end-column="18" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="index.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/mydoc/plugins/content_index/index.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="575">
-              <caret line="100" column="44" lean-forward="false" selection-start-line="100" selection-start-column="36" selection-end-line="100" selection-end-column="44" />
+            <state relative-caret-position="1972">
+              <caret line="116" column="64" lean-forward="true" selection-start-line="116" selection-start-column="64" selection-end-line="116" selection-end-column="64" />
               <folding>
                 <element signature="e#0#47#0" expanded="true" />
               </folding>
@@ -104,21 +105,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.html" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/mydoc/index.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="517">
-              <caret line="110" column="52" lean-forward="false" selection-start-line="110" selection-start-column="52" selection-end-line="110" selection-end-column="52" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="create_element.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/lib/create_element.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="486">
-              <caret line="72" column="20" lean-forward="true" selection-start-line="72" selection-start-column="20" selection-end-line="72" selection-end-column="20" />
+            <state relative-caret-position="476">
+              <caret line="28" column="30" lean-forward="true" selection-start-line="28" selection-start-column="30" selection-end-line="28" selection-end-column="30" />
               <folding>
                 <element signature="e#0#33#0" expanded="true" />
               </folding>
@@ -126,11 +117,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Path.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/lib/Path.js">
+      <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/mydoc/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-105">
-              <caret line="38" column="53" lean-forward="false" selection-start-line="38" selection-start-column="53" selection-end-line="38" selection-end-column="53" />
+            <state relative-caret-position="476">
+              <caret line="105" column="30" lean-forward="true" selection-start-line="105" selection-start-column="30" selection-end-line="105" selection-end-column="30" />
               <folding />
             </state>
           </provider>
@@ -140,36 +131,36 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>options</find>
-      <find>renderContent</find>
-      <find>substr</find>
-      <find>only_dir</find>
-      <find>eContentIndex</find>
-      <find>new Path</find>
-      <find>rstrip</find>
-      <find>path</find>
-      <find>abs</find>
-      <find>pathInfo</find>
-      <find>item</find>
-      <find>ext()</find>
-      <find>toLowerCase</find>
-      <find>filename</find>
-      <find>renderList</find>
-      <find>pathChanged</find>
-      <find>content_tree</find>
-      <find>pathObj</find>
-      <find>prevNode</find>
-      <find>sib</find>
-      <find>sibling</find>
-      <find>eButton</find>
-      <find>$e</find>
-      <find>list</find>
-      <find>$el</find>
-      <find>$eMain</find>
-      <find>dir</find>
-      <find>isDir</find>
-      <find>1000px</find>
       <find>depth</find>
+      <find>history</find>
+      <find>loadHash</find>
+      <find>load</find>
+      <find>query</find>
+      <find>pathchange</find>
+      <find>path\b</find>
+      <find>_pathObj</find>
+      <find>segment</find>
+      <find>renderContent</find>
+      <find>path</find>
+      <find>__</find>
+      <find>data('path')</find>
+      <find>mouseleave</find>
+      <find>eBtn</find>
+      <find>uiRenderContentRefresh</find>
+      <find>initCompleted</find>
+      <find>refresh-content</find>
+      <find>contentLoaded</find>
+      <find>list</find>
+      <find>scrollTo</find>
+      <find>scrollTop</find>
+      <find>path-change</find>
+      <find>contentReloaded</find>
+      <find>pathObj</find>
+      <find>$el</find>
+      <find>renderList</find>
+      <find>1000px</find>
+      <find>child</find>
+      <find>z-index</find>
     </findStrings>
     <replaceStrings>
       <replace>jq</replace>
@@ -191,10 +182,14 @@
       <replace>this.\$event</replace>
       <replace>btn</replace>
       <replace>chains</replace>
-      <replace>info</replace>
       <replace>pathchange</replace>
+      <replace>init-completed</replace>
+      <replace>content-refresh</replace>
+      <replace>info</replace>
+      <replace>contentReloaded</replace>
       <replace>900px</replace>
       <replace>prev</replace>
+      <replace>pathChange</replace>
     </replaceStrings>
     <dirStrings>
       <dir>Z:\wwwroot\docsite\src</dir>
@@ -232,8 +227,8 @@
         <option value="$PROJECT_DIR$/lib/create_element.js" />
         <option value="$PROJECT_DIR$/mydoc/index.js" />
         <option value="$PROJECT_DIR$/mydoc/plugins/content_index/index.css" />
-        <option value="$PROJECT_DIR$/mydoc/plugins/content_index/index.js" />
         <option value="$PROJECT_DIR$/mydoc/index.html" />
+        <option value="$PROJECT_DIR$/mydoc/plugins/content_index/index.js" />
       </list>
     </option>
   </component>
@@ -388,12 +383,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1603782533704</updated>
-      <workItem from="1603782535242" duration="117428000" />
+      <workItem from="1603782535242" duration="147664000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="117428000" />
+    <option name="totallyTimeSpent" value="147664000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -431,14 +426,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/lib/request.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="9" column="27" lean-forward="true" selection-start-line="9" selection-start-column="27" selection-end-line="9" selection-end-column="27" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/lib/docsite-sdk.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="747">
@@ -793,57 +780,65 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lib/Path.js">
+    <entry file="file://$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external/lib.es5.d.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-105">
-          <caret line="38" column="53" lean-forward="false" selection-start-line="38" selection-start-column="53" selection-end-line="38" selection-end-column="53" />
+        <state relative-caret-position="306">
+          <caret line="273" column="4" lean-forward="false" selection-start-line="273" selection-start-column="4" selection-end-line="273" selection-end-column="4" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/mydoc/plugins/content_index/index.css">
+    <entry file="file://$PROJECT_DIR$/lib/Path.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="459">
-          <caret line="27" column="16" lean-forward="false" selection-start-line="27" selection-start-column="8" selection-end-line="27" selection-end-column="16" />
+        <state relative-caret-position="0">
+          <caret line="0" column="21" lean-forward="false" selection-start-line="0" selection-start-column="21" selection-end-line="0" selection-end-column="21" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/mydoc/index.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1752">
-          <caret line="100" column="30" lean-forward="false" selection-start-line="100" selection-start-column="30" selection-end-line="100" selection-end-column="39" />
+        <state relative-caret-position="677">
+          <caret line="564" column="29" lean-forward="false" selection-start-line="564" selection-start-column="29" selection-end-line="564" selection-end-column="29" />
           <folding>
             <element signature="e#0#41#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/mydoc/plugins/content_index/index.js">
+    <entry file="file://$PROJECT_DIR$/mydoc/plugins/content_index/index.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="575">
-          <caret line="100" column="44" lean-forward="false" selection-start-line="100" selection-start-column="36" selection-end-line="100" selection-end-column="44" />
-          <folding>
-            <element signature="e#0#47#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="238">
+          <caret line="14" column="18" lean-forward="false" selection-start-line="14" selection-start-column="18" selection-end-line="14" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mydoc/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="476">
+          <caret line="105" column="30" lean-forward="true" selection-start-line="105" selection-start-column="30" selection-end-line="105" selection-end-column="30" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/lib/create_element.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="486">
-          <caret line="72" column="20" lean-forward="true" selection-start-line="72" selection-start-column="20" selection-end-line="72" selection-end-column="20" />
+        <state relative-caret-position="476">
+          <caret line="28" column="30" lean-forward="true" selection-start-line="28" selection-start-column="30" selection-end-line="28" selection-end-column="30" />
           <folding>
             <element signature="e#0#33#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/mydoc/index.html">
+    <entry file="file://$PROJECT_DIR$/mydoc/plugins/content_index/index.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="517">
-          <caret line="110" column="52" lean-forward="false" selection-start-line="110" selection-start-column="52" selection-end-line="110" selection-end-column="52" />
-          <folding />
+        <state relative-caret-position="1972">
+          <caret line="116" column="64" lean-forward="true" selection-start-line="116" selection-start-column="64" selection-end-line="116" selection-end-column="64" />
+          <folding>
+            <element signature="e#0#47#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

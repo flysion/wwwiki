@@ -1,7 +1,8 @@
 import __ from './../lib/create_element';
-import { list, readFile, mkdir } from './../lib/request';
+import { list, readFile } from './../lib/request';
 import  Path from './../lib/Path';
 import EventEmitter from 'events';
+const queryString = require('query-string');
 
 window.MyDoc = function ($options) {
     $options = $.extend({
@@ -33,8 +34,17 @@ window.MyDoc = function ($options) {
         ],
     });
 
+    $eMain.appendTo($options.el);
+
+    // 初始化事件
+
     const $event = new EventEmitter();
 
+    /**
+     * 将 markdown 转换成 html
+     *
+     * @return string
+     */
     const md2html = (function() {
         let renderer = new marked.Renderer();
 
@@ -74,12 +84,29 @@ window.MyDoc = function ($options) {
         };
     }) ();
 
-    const renderList = function (pathObj) {
-        list(pathObj.toString(), 1, false).done(items => {
+    /**
+     * 使视图Y轴滚动到指定ID元素的位置
+     *
+     * @param id
+     */
+    const scrollTop = (id) => {
+        let el = $(document.getElementById(id));
+        if(el.length === 0) return;
+        $eMain.animate({scrollTop: el.offset().top + $eMain.prop('scrollTop')}, 500);
+    };
+
+    /**
+     * 渲染列表
+     *
+     * @param {Path} path
+     */
+    const renderList = function (path) {
+        list(path.toString(), 1, false).done(items => {
             $eList.empty();
 
             items.forEach((item) => {
-                let _pathObj = Path.createFromString(item.path);
+                let _path = Path.createFromString(item.path);
+                if (_path.basename() === $options.indexFile) return;
 
                 let  li = {
                     tag: 'li',
@@ -91,23 +118,22 @@ window.MyDoc = function ($options) {
                         },
                         label: {
                             tag: 'a',
-                            text: _pathObj.basename(),
-                            class: ['label'],
-                            attr: {}
+                            text: _path.basename(),
+                            class: ['label']
                         }
                     }
                 };
 
-                if(_pathObj.isDirectory()) {
+                if(_path.isDirectory()) {
                     li.class.push('folder');
-                    li.children.label.attr.href = `#${_pathObj.toString()}`;
-                } else if (_pathObj.ext() === 'md') {
-                    li.class.push('file', `file-${_pathObj.ext()}`);
-                    li.children.label.attr.href = `#${_pathObj.toString()}`;
+                    li.children.label.href = `#${_path.toString()}`;
+                } else if (_path.ext() === 'md') {
+                    li.class.push('file', `file-${_path.ext()}`);
+                    li.children.label.href = `#${_path.toString()}`;
                 } else {
-                    li.class.push('file', `file-${_pathObj.ext()}`);
-                    li.children.label.attr.href = _pathObj.toString();
-                    li.children.label.attr.target = '_blank';
+                    li.class.push('file', `file-${_path.ext()}`);
+                    li.children.label.href = _path.toString();
+                    li.children.label.target = '_blank';
                 }
 
                 $eList.append(__(li));
@@ -117,20 +143,23 @@ window.MyDoc = function ($options) {
         });
     };
 
+    /**
+     * 渲染导航栏
+     */
     const renderNavbar = () => {
         $eNavbar.empty().append('<li><a href="#/"><span class="fa fa-home"></span></a></li>').show();
 
         const treeEach = function(el, items) {
             items.forEach((item) => {
-                let _pathObj = Path.createFromString(item.path);
+                let _path = Path.createFromString(item.path);
 
                 let eLi = __({
                     tag: 'li',
                     children: [
                         {
                             tag: 'a',
-                            attr: {href: `#${_pathObj.toString()}`},
-                            text: _pathObj.basename()
+                            href: `#${_path.toString()}`,
+                            text: _path.basename()
                         },
                     ]
                 }).appendTo(el);
@@ -147,8 +176,13 @@ window.MyDoc = function ($options) {
         });
     };
 
-    const renderPath = pathObj => {
-        let segments = pathObj.segments();
+    /**
+     * 渲染路径
+     *
+     * @param {Path} path
+     */
+    const renderPath = path => {
+        let segments = path.segments();
 
         // 新的路径比原来的短，假设以前是 /a/b/c 现在是 /1/2 需要先把长度对齐（即：把 /c 去掉）
         $ePath.children(`li.segment:gt(${segments.length - 1})`).remove();
@@ -157,32 +191,61 @@ window.MyDoc = function ($options) {
             let eOld = $ePath.children(`li.segment:eq(${i})`);
 
             // 路径片段相同，假设以前是 /a/b/c 跳转到 /a/d 那么 /a 是相同的，不予处理
-            if(eOld.data('path') === segment.toString()) {
+            if(eOld.length > 0 && eOld.data('path').toString() === segment.toString()) {
                 return;
             }
 
             let li = {
                 tag: 'li',
                 class: ['segment', segment.isDirectory() ? 'folder' : 'file'],
-                data: {
-                    'path': segment.toString()
-                },
+                data: {path: segment},
                 children: [
                     {
                         tag: 'a',
                         text: i === 0 ? "" : segment.basename(),
                         html: i === 0 ? {tag: 'span', class: ['fa', 'fa-home']} : null,
-                        class: i === 0 ? ['label', 'root'] : ['label'],
-                        attr: {href: `#${segment.toString()}`}
+                        class: i === 0 ? ['root'] : ['label'],
+                        href: `#${segment.toString()}`
                     }
-                ]
+                ],
+                on: {
+                    mouseleave: (e, el) => {
+                        el.children('ul').hide();
+                    }
+                }
             };
 
             if (segment.isDirectory()) {
                 li.children.push({
                     tag: 'span',
-                    data: {pathObj: segment},
-                    html: {tag: 'span', class: ['fa', 'fa-angle-right']},
+                    class: ['fa', 'fa-angle-right'],
+                    on: {
+                        click: (e, el) => {
+                            let ul = el.siblings('ul');
+                            if(ul.length > 0) {
+                                ul.toggle();
+                                return;
+                            }
+
+                            ul = __({tag: 'ul', class: ['active']});
+                            el.after(ul);
+
+                            list(segment.toString(), 1, true).done(items => {
+                                if(items.length === 0) return;
+                                items.forEach((item) => {
+                                    let _path = Path.createFromString(item.path);
+                                    ul.append(__({
+                                        tag: 'li',
+                                        html: {
+                                            tag: 'a',
+                                            text: _path.basename(),
+                                            href: `#${_path.toString()}`,
+                                        }
+                                    }));
+                                });
+                            });
+                        }
+                    }
                 });
             }
 
@@ -190,12 +253,19 @@ window.MyDoc = function ($options) {
         });
     };
 
-    const renderContent = (pathObj, path, text = null) => {
+    /**
+     * 渲染内容
+     *
+     * @param {Path} path
+     * @param {string} query
+     * @param {string} text
+     */
+    const renderContent = (path, query, text = null) => {
         if (text === null) {
-            readFile(path).done(resp => {
-                renderContent(pathObj, path, resp);
+            readFile(path.isFile() ? path.toString() : path.join($options.indexFile).toString()).done(resp => {
+                renderContent(path, query, resp);
             }).fail(() => {
-                renderContent(pathObj, path, '');
+                renderContent(path, query, '');
             });
 
             return ;
@@ -203,7 +273,7 @@ window.MyDoc = function ($options) {
 
         $eContent.html(md2html(text));
 
-        $event.emit('uiRenderContentCompleted', pathObj, path);
+        $event.emit('contentReloaded', path, query);
     };
     //
     // const showMdEditor = (options) => {
@@ -237,29 +307,41 @@ window.MyDoc = function ($options) {
     //     });
     // };
 
-    const load = (path) => {
-        let r = path.match(/^(\/.*?)(?:\?.+)*$/);
-        if (r === null) return;
+    /**
+     * 页面加载
+     */
+    const load = (function() {
+        let currentPath = null;
 
-        let pathObj = Path.createFromString(r[1]);
+        return (url) => {
+            let r = url.match(/^(\/.*?)(\?.+)*$/);
+            if (r === null) return;
 
-        if (pathObj.isFile() && pathObj.ext() !== 'md') {
-            window.location.href = r[1];
-            return;
-        }
+            let path = Path.createFromString(r[1]);
+            let query = queryString.parse(r[2], {arrayFormat: 'bracket'});
 
-        $event.emit('pathchange', pathObj);
+            if (path.isFile() && path.ext() !== 'md') {
+                window.location.href = url;
+                return;
+            }
 
-        return pathObj;
-    };
+            if (currentPath === null || currentPath.toString() !== path.toString()) {
+                $event.emit('pathChange', path, query);
+                currentPath = path;
+                return;
+            } else if(query.id) {
+                scrollTop(query.id);
+            }
 
+            return path;
+        };
+    })();
+
+    /**
+     * 页面加载-通过 window.location.hash
+     */
     const loadHash = () => {
-        if (window.location.hash === '') {
-            load('/');
-            return;
-        }
-
-        load(decodeURI(window.location.hash.substr(1)));
+        load(window.location.hash === '' ? '/' : decodeURI(window.location.hash.substr(1)));
     };
 
     // 虚拟事件
@@ -272,31 +354,37 @@ window.MyDoc = function ($options) {
         loadHash();
     });
 
-    $event.on('pathchange', pathObj => {
-        document.title = `${$options.title} - ${pathObj.toString()}`;
+    $event.on('pathChange', path => {
+        document.title = `${$options.title} - ${path.toString()}`;
     });
 
-    $event.on('pathchange', pathObj => {
-        if (pathObj.isFile()) {
+    $event.on('pathChange', path => {
+        if (path.isFile()) {
             $eList.hide();
         }
     });
 
-    $event.on('pathchange', pathObj => {
-        if (pathObj.isDirectory()) {
-            renderList(pathObj);
+    $event.on('pathChange', path => {
+        if (path.isDirectory()) {
+            renderList(path);
         }
     });
 
-    $event.on('pathchange', pathObj => {
-        renderContent(pathObj, pathObj.isFile() ? pathObj.toString() : pathObj.join($options.indexFile).toString());
+    $event.on('pathChange', (path, query) => {
+        renderContent(path, query);
     });
 
-    $event.on('pathchange', pathObj => {
-        renderPath(pathObj);
+    $event.on('pathChange', path => {
+        renderPath(path);
     });
 
-    // $event.on('pathchange', pathObj => {
+    $event.on('contentReloaded', (path, query) => {
+        if (query.id) {
+            scrollTop(query.id);
+        }
+    });
+
+    // $event.on('pathChange', pathObj => {
     //     $ePath.children('li.tools').remove();
     //
     //     const ePathToolbar = __({tag: 'ul'});
@@ -441,46 +529,42 @@ window.MyDoc = function ($options) {
     $(window).on('hashchange', () => {
         loadHash();
     });
+    //
+    // $ePath.on('mouseleave', 'li.segment', function() {
+    //     $(this).children('ul').hide();
+    // })
+    //
+    // $ePath.on('click', 'li.segment>span', function() {
+    //     let eBtn = $(this);
+    //     let ePanel = eBtn.siblings('ul');
+    //
+    //     if(ePanel.length > 0) {
+    //         ePanel.toggle();
+    //         return;
+    //     }
+    //
+    //     ePanel = __({tag: 'ul', class: ['active']});
+    //     eBtn.after(ePanel);
+    //
+    //     list(eBtn.data('path').toString(), 1, true).done(items => {
+    //         if(items.length === 0) return;
+    //         items.forEach((item) => {
+    //             let _path = Path.createFromString(item.path);
+    //             ePanel.append(__({
+    //                 tag: 'li',
+    //                 html: {
+    //                     tag: 'a',
+    //                     text: _path.basename(),
+    //                     href: `#${_path.toString()}`,
+    //                 }
+    //             }));
+    //         });
+    //     });
+    // });
 
-    $ePath.on('mouseleave', 'li.segment', function() {
-        $(this).children('ul').hide();
-    })
-
-    $ePath.on('click', 'li.segment>span', function() {
-        let eBtn = $(this);
-        let ePanel = eBtn.siblings('ul');
-
-        if(ePanel.length > 0) {
-            ePanel.toggle();
-            return;
-        }
-
-        ePanel = __({tag: 'ul', class: ['active']});
-        eBtn.after(ePanel);
-
-        list(eBtn.data('pathObj').toString(), 1, true).done(items => {
-            if(items.length === 0) return;
-            items.forEach((item) => {
-                let _pathObj = Path.createFromString(item.path);
-                ePanel.append(__({
-                    tag: 'li',
-                    html: {
-                        tag: 'a',
-                        text: _pathObj.basename(),
-                        attr: {
-                            href: `#${_pathObj.toString()}`,
-                        }
-                    }
-                }));
-            });
-        });
+    $options.plugins.forEach(plugin => {
+        plugin(this, $event, $eMain);
     });
-
-    $options.plugins.forEach((plugin) => {
-        plugin($event, $eMain);
-    });
-
-    $eMain.appendTo($options.el);
 
     $event.emit('initCompleted');
 };

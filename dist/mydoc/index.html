@@ -16,22 +16,22 @@
     <style type="text/css">
         body {margin:0;padding:0;color:#333;}
         a {color:#6bb56b;}
-        .mydoc-main {height:100vh;overflow-y:auto;position:relative;}
+        .mydoc-main {height:100vh;overflow-y:auto;position:relative;z-index:10000;}
         .mydoc-container {width:900px;margin:0 auto;}
 
         .mydoc-navbar {background-color:#6bb56b;}
         .mydoc-navbar:after {content:"";clear:both;display:block;}
         .mydoc-navbar,
         .mydoc-navbar ul {margin:0;padding:0;display:none;list-style-type:none;}
-        .mydoc-navbar a {text-decoration:none;color:white;display:block;}
+        .mydoc-navbar a {text-decoration:none;color:white;display:inline-block;height:40px;line-height:40px;}
         .mydoc-navbar>li {float:left;}
-        .mydoc-navbar>li>a {padding:10px 15px;}
+        .mydoc-navbar>li>a {padding:0 15px;}
         .mydoc-navbar li:hover {background-color:#88CA88;}
         .mydoc-navbar li:hover>ul {display:block;}
         .mydoc-navbar>li>ul>li>ul {top:0;left:100%;}
-        .mydoc-navbar ul {max-height:550px;min-width:150px;max-width:350px;overflow:auto;padding:10px;display:none;background-color:#88CA88;box-shadow:#888888 10px 10px 7px;position:absolute;z-index:9999;}
+        .mydoc-navbar ul {max-height:550px;min-width:150px;max-width:350px;overflow:auto;padding:10px;display:none;background-color:#88CA88;box-shadow:#888888 10px 10px 7px;position:absolute;z-index:9000;}
 
-        .mydoc-path {border-bottom:1px solid #88CA88;padding-left:0;list-style-type:none; margin:15px 0 0 0;}
+        .mydoc-path {border-bottom:1px solid #88CA88;padding-left:0;list-style-type:none;margin:15px 0 0 0;}
         .mydoc-path a {text-decoration:none;}
         .mydoc-path>li {position:relative;float:left;}
         .mydoc-path:after {content:"";clear:both;display:block;}
@@ -42,7 +42,7 @@
         .mydoc-path>li:hover>span {background-color:#88CA88; color:#fff;}
         .mydoc-path>li>span {cursor:pointer;color:#ccc;}
         .mydoc-path>li>span:hover {background-color:#6bb56b;}
-        .mydoc-path>li>ul {z-index:9999;padding:10px;max-height:550px;overflow:auto;min-width:150px;position:absolute;background-color:#88CA88;box-shadow:#888888 10px 10px 7px;}
+        .mydoc-path>li>ul {z-index:8000;padding:10px;max-height:550px;overflow:auto;min-width:150px;position:absolute;background-color:#88CA88;box-shadow:#888888 10px 10px 7px;}
         .mydoc-path>li>ul>li>a {display:block; color:#fff;}
 
         .mydoc-path>li.tools {float:right;}
@@ -51,7 +51,7 @@
         .mydoc-path>li.tools>ul>li>span {width:32px;height:32px;line-height:32px;text-align:center;color:white;cursor:pointer;}
         .mydoc-path>li.tools:hover>ul {display:block;}
 
-        .mydoc-list {margin:15px 10px 0 10px;padding:10px;background-color:#f5f5f5;display:none;max-height:300px;overflow:auto;list-style-type:none;}
+        .mydoc-list {margin:15px 0 0 0;padding:10px;background-color:#f5f5f5;display:none;max-height:300px;overflow:auto;list-style-type:none;}
         .mydoc-list>li>.icon {display:inline-block;margin-right:10px;color:#999;}
         .mydoc-list>li>.icon {display:inline-block;font:normal normal normal 14px/1 FontAwesome;font-size:inherit;text-rendering:auto;-webkit-font-smoothing:antialiased;}
         .mydoc-list>li.folder>.icon:before { content:"\f114";}
@@ -79,7 +79,7 @@
         .mydoc-editor-tool-save {float:right;}
         .mydoc-editor-tool-cancel {float:right;}
         */
-        .mydoc-content {margin:15px 10px 0 10px;}
+        .mydoc-content {margin:15px 0 0 0;word-wrap:break-word;}
         .mydoc-content>:first-child {margin-top:0;}
         .mydoc-content table {border-collapse:collapse;border-spacing:0;width:100%;}
         .mydoc-content table td,
@@ -91,10 +91,9 @@
 
         @media screen and (max-width:900px) {
             .mydoc-container {width:auto;}
-        }
-
-        @media screen and (max-width:700px) {
-            .mydoc-navbar>li>a {padding:5px;}
+            .mydoc-navbar>li>a {padding:0 5px;}
+            .mydoc-list,
+            .mydoc-content {margin-left:10px;margin-right:10px;}
         }
     </style>
 </head>
@@ -104,13 +103,7 @@
         new MyDoc({
             el: 'body',
             plugins: [
-                ContentIndex({
-                    maxDepth:0, // 最大深度
-                    float: true, // 浮动状态还是固定状态
-                    allowDirectory: false, // 目录状态下是否启用
-                    defaultVisibleFloat: false, // 在浮动状态（真正意义上的浮动状态，通过position=fixed）下，默认是否显示
-                    closeKey: 'X', // 快捷键关闭
-                })
+                ContentIndex()
             ],
             linkUrl: url => {
                 if (url.substr(0, 6) === '/docs/') return url.substr(5);
