@@ -1,7 +1,7 @@
 import __ from './../../../lib/create_element';
 import './index.css';
 
-function content_tree(el) {
+function getContentIndexTree(el) {
     let tree = [];
     let chains = [];
     let prev = null;
@@ -15,6 +15,7 @@ function content_tree(el) {
         let node = {
             id: header.attr('id'),
             title: header.text(),
+            el: header,
             num: num,
             children: []
         };
@@ -51,7 +52,7 @@ function content_tree(el) {
 window.ContentIndex = function($options) {
     $options = $.extend({
         maxDepth: 0, // 最大深度
-        float: false, // 浮动状态还是固定状态（移动端强制为固定状态）
+        float: true, // 浮动状态还是固定状态（移动端强制为固定状态）
         allowDirectory: true, // 目录状态下是否启用，如果不启用的话仍然会生成文章索引，但是默认不显示
         closeKey: 'x', // ctrl+快捷键关闭（隐藏文章索引）
         floatKey: 'z', // ctrl+浮动状态与固定状态的切换（移动端强制为固定状态，不可切换）
@@ -62,24 +63,63 @@ window.ContentIndex = function($options) {
         }
     }, $options);
 
-    return (o, $event, $el) => {
-        const $eContentIndex = __({
+    /**
+     * @param {MyDoc}
+     */
+    return ($core) => {
+        const $el = __({
             tag: 'div',
             class: ['mydoc-content-index', $options.float ? 'float' : ''],
         });
 
-        $eContentIndex.hide();
-        $el.find('.mydoc-container>.mydoc-list').after($eContentIndex);
+        $el.hide();
+        $core.elList.after($el);
+
+        // 获取当前索引
+
+        const current = (top) => {
+            let indexes = $el.find('li');
+
+            let prev = null;
+            for(let i = indexes.length - 1; i >= 0; i--) {
+                let index = $(indexes[i]);
+                let target = index.data('target');
+                if (target.offset().top <= top) {
+                    return prev ? prev : index;
+                }
+
+                prev = index;
+            }
+
+            return $($el.find('li')[0]);
+        };
+
+        // 根据滚动条高亮当前索引
+
+        const highlightCurrent = () => {
+            let top = $(window).scrollTop();
+            $el.find('li.current').removeClass('current');
+            let currentIndex = current(top);
+            currentIndex.addClass('current');
+        };
 
         // 快捷键
 
         $(document).keyup(e => {
             if(e.ctrlKey && e.key === $options.floatKey) {
-                $eContentIndex.hasClass('float') ? $eContentIndex.removeClass('float') : $eContentIndex.addClass('float');
-                $eContentIndex.show();
+                $el.hasClass('float') ? $el.removeClass('float') : $el.addClass('float');
+                $el.show();
             } else if(e.ctrlKey && e.key === $options.closeKey) {
-                $eContentIndex.toggle();
+                $el.toggle();
             }
+        });
+
+        // 监听滚动位置
+
+        let pid = 0;
+        $(window).on('scroll', e => {
+            if (pid > 0) clearTimeout(pid);
+            pid = setTimeout(highlightCurrent, 30);
         });
 
         const render = (options, path, el, items, prefix = '', depth = 1) => {
@@ -89,39 +129,59 @@ window.ContentIndex = function($options) {
             items.forEach((item, i) => {
                 let li = __({
                     tag: 'li',
+                    data: {
+                        target: item.el
+                    },
                     children: [
                         {tag: 'span', class: 'num', text: `${prefix}${i+1}.`},
                         {tag: 'a', href:`#${path.toString()}?id=${item.id}`, text: item.title},
                     ]
                 }).appendTo(ul);
 
-                if (item.children.length > 0) render(options, path, li, item.children, `${prefix}${i+1}.`, depth + 1);
+                if (item.children.length > 0) {
+                    render(options, path, li, item.children, `${prefix}${i+1}.`, depth + 1);
+                }
             });
         };
 
-        $event.on('contentReloaded', (path) => {
-            $eContentIndex.empty();
+        $core.event.on('contentReloaded', (path) => {
+            $el.empty();
 
-            let tree = content_tree($el.find('.mydoc-container>.mydoc-content'));
+            let tree = getContentIndexTree($core.elContent);
             let options = $.extend($options, $options.getOptions(path, tree));
             // 跳过最顶级标题
             if (options.skipTop) tree = tree.length === 1 ? tree[0].children : tree;
             if (tree.length === 0) {
-                $eContentIndex.hide();
+                $el.hide();
                 return;
             }
 
-            render(options, path, $eContentIndex, tree);
+            render(options, path, $el, tree);
+            highlightCurrent();
+
+            if (options.hide) {
+                $el.hide();
+                return;
+            }
+
+            if (options.show) {
+                $el.show();
+                return;
+            }
+
+            let show = true;
 
             // 是否在目录下显示
             if (!options.allowDirectory && path.isDirectory()) {
-                $eContentIndex.hide();
-            } else {
-                $eContentIndex.show();
+                show = false;
             }
 
             // 只有一个标题时不显示
-            if (options.onlyOneHide && tree.length === 1 && tree[0].children.length === 0) $eContentIndex.hide();
+            if (options.onlyOneHide && tree.length === 1 && tree[0].children.length === 0) {
+                show = false;
+            }
+
+            show ? $el.show() : $el.hide();
         });
     };
 };

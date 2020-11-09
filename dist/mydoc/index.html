@@ -5,33 +5,37 @@
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.3.1/build/styles/default.min.css">
+
+    <!--highlightjs-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.3.2/build/styles/default.min.css">
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.3.2/build/highlight.min.js"></script>
+
     <link rel="stylesheet" href="/docsite/font-awesome-4.7.0/css/font-awesome.min.css">
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.3.1/build/highlight.min.js"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/jquery@1.11.0/dist/jquery.min.js"></script>
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/monaco-editor@0.21.2/min/vs/loader.js"></script>
+
     <!--plugins-->
     <script type="text/javascript" src="/docsite/mydoc/plugins/content_index.min.js"></script>
     <style type="text/css">
         body {margin:0;padding:0;color:#333;}
-        a {color:#6bb56b;}
-        .mydoc-main {height:100vh;overflow-y:auto;position:relative;z-index:10000;}
-        .mydoc-container {width:900px;margin:0 auto;}
 
-        .mydoc-navbar {background-color:#6bb56b;}
+        .mydoc-main {position:relative;}
+        .mydoc-main a {color:#6bb56b;}
+
+        .mydoc-navbar {background-color:#6bb56b;position:fixed;width:100%;z-index:9999;top:0;}
         .mydoc-navbar:after {content:"";clear:both;display:block;}
         .mydoc-navbar,
         .mydoc-navbar ul {margin:0;padding:0;display:none;list-style-type:none;}
-        .mydoc-navbar a {text-decoration:none;color:white;display:inline-block;height:40px;line-height:40px;}
+        .mydoc-navbar a {text-decoration:none;color:white;display:inline-block;}
         .mydoc-navbar>li {float:left;}
-        .mydoc-navbar>li>a {padding:0 15px;}
+        .mydoc-navbar>li>a {padding:0 15px;height:40px;line-height:40px;}
         .mydoc-navbar li:hover {background-color:#88CA88;}
         .mydoc-navbar li:hover>ul {display:block;}
         .mydoc-navbar>li>ul>li>ul {top:0;left:100%;}
-        .mydoc-navbar ul {max-height:550px;min-width:150px;max-width:350px;overflow:auto;padding:10px;display:none;background-color:#88CA88;box-shadow:#888888 10px 10px 7px;position:absolute;z-index:9000;}
+        .mydoc-navbar ul {max-height:550px;min-width:150px;max-width:350px;overflow:auto;padding:10px;display:none;background-color:#88CA88;box-shadow:#888888 10px 10px 7px;position:absolute;z-index:9998;}
 
-        .mydoc-path {border-bottom:1px solid #88CA88;padding-left:0;list-style-type:none;margin:15px 0 0 0;}
+        .mydoc-container {width:900px;margin:40px auto 0 auto;padding:10px;min-height:calc(100vh - 60px);}
+
+        .mydoc-path {border-bottom:1px solid #88CA88;padding:0;list-style-type:none;margin:0;}
         .mydoc-path a {text-decoration:none;}
         .mydoc-path>li {position:relative;float:left;}
         .mydoc-path:after {content:"";clear:both;display:block;}
@@ -51,7 +55,7 @@
         .mydoc-path>li.tools>ul>li>span {width:32px;height:32px;line-height:32px;text-align:center;color:white;cursor:pointer;}
         .mydoc-path>li.tools:hover>ul {display:block;}
 
-        .mydoc-list {margin:15px 0 0 0;padding:10px;background-color:#f5f5f5;display:none;max-height:300px;overflow:auto;list-style-type:none;}
+        .mydoc-list {margin:15px 0 0 0;padding:10px;background-color:#eee;display:none;max-height:300px;overflow:auto;list-style-type:none;}
         .mydoc-list>li>.icon {display:inline-block;margin-right:10px;color:#999;}
         .mydoc-list>li>.icon {display:inline-block;font:normal normal normal 14px/1 FontAwesome;font-size:inherit;text-rendering:auto;-webkit-font-smoothing:antialiased;}
         .mydoc-list>li.folder>.icon:before { content:"\f114";}
@@ -84,36 +88,51 @@
         .mydoc-content table {border-collapse:collapse;border-spacing:0;width:100%;}
         .mydoc-content table td,
         .mydoc-content table th {border:1px solid #e3e3e3;padding:5px;}
-        .mydoc-content table thead {background-color:#eeeeee;}
-        .mydoc-content code {padding:0 3px;margin:0 3px;background-color:#eeeeee;border-radius:3px;font-family:"Consolas";}
+        .mydoc-content table thead {background-color:#eee;}
+        .mydoc-content code {padding:0 3px;margin:0 3px;background-color:#ffd4d4;border-radius:3px;font-family:"Consolas";}
         .mydoc-content pre>code  {padding:0;margin:0;background-color:transparent;border:0;border-radius:0;}
-        .mydoc-content pre {padding:10px;overflow:auto;background-color:#f5f5f5;}
+        .mydoc-content pre {padding:10px;overflow:auto;background-color:#eee;}
+        .mydoc-content .list {padding-left: 25px;}
+        .mydoc-content .task-list {list-style-type:none;padding-left:0;}
+        .mydoc-content .task-list>li {position: relative; padding-left: 25px;}
+        .mydoc-content .task-list>li>input[type=checkbox] {position: absolute;left:0;vertical-align: middle;}
 
         @media screen and (max-width:900px) {
             .mydoc-container {width:auto;}
+            .mydoc-path {margin-left:-10px; margin-right:-10px;}
             .mydoc-navbar>li>a {padding:0 5px;}
-            .mydoc-list,
-            .mydoc-content {margin-left:10px;margin-right:10px;}
         }
     </style>
 </head>
 <body>
 <script type="text/javascript">
     $(document).ready(function() {
-        new MyDoc({
-            el: 'body',
+        let mydoc = new MyDoc({
             plugins: [
                 ContentIndex()
             ],
-            linkUrl: url => {
-                if (url.substr(0, 6) === '/docs/') return url.substr(5);
+            link: url => {
+                if (url.substr(0, 6) === '/docs/') {
+                    return url.substr(5);
+                }
+
                 return url;
             },
-            filterNavbar: item => {
-                return item.path !== '/.git/';
+            filter: path => {
+                let pathStr = path.toString();
+                return pathStr !== '/.git/' && pathStr !== '/index.html';
             },
-            filterList: item => {
-                return item.name.toLowerCase() !== 'readme.md' && item.path !== '/.git/' && item.path !== '/index.html' && item.path !== '/.db.py' && item.path !== '/.db.json';
+            highlight: function (code, lang) {
+                if (lang) {
+                    try {
+                        return  hljs.highlight(lang, code).value;
+                    } catch (err) {
+                        console.error(err);
+                        return  hljs.highlightAuto(code).value;
+                    }
+                }
+
+                return code;
             }
         });
     });

@@ -1,86 +1,123 @@
 import __ from './../lib/create_element';
-import { list, readFile } from './../lib/request';
+import HttpClient from './../lib/HttpClient';
 import  Path from './../lib/Path';
 import EventEmitter from 'events';
+import marked from 'marked';
+
 const queryString = require('query-string');
 
 window.MyDoc = function ($options) {
     $options = $.extend({
-        el: 'body',
+        title: document.title,
         indexFile: 'README.md',
         plugins: [
 
         ],
-        linkUrl: url => { return url; },
-        title: document.title,
+        link: url => { return url; },
+        filter: path => {
+            return true;
+        },
+        sort: (a, b) => {
+            if (a.is_file === b.is_file) return a.name === b.name ? 0 : (a.name > b.name ? -1 : 1);
+            if(!a.is_file) return -1;
+            if(!b.is_file) return 1;
+        },
+        highlight: (code, lang) => {
+            return code;
+        }
     }, $options);
+
+    /**
+     * 服务端接口请求
+     *
+     * @type {HttpClient}
+     */
+    this.client = new HttpClient();
+
+    /**
+     * 事件引擎
+     *
+     * @type {EventEmitter}
+     */
+    this.event = new EventEmitter();
 
     // 加载 dom
 
-    const $eNavbar = __('<ul class="mydoc-navbar"></ul>');
-    const $ePath = __('<ul class="mydoc-path"></ul>');
-    const $eList = __('<ul class="mydoc-list"></ul>');
-    const $eContent = __('<div class="mydoc-content"></div>');
-    const $eMain = __({
+    this.elNavbar = __('<ul class="mydoc-navbar"></ul>');
+    this.elPath = __('<ul class="mydoc-path"></ul>');
+    this.elList = __('<ul class="mydoc-list"></ul>');
+    this.elContent = __('<div class="mydoc-content"></div>');
+    this.elMain = __({
         tag: '<div class="mydoc-main"></div>',
         children: [
-            $eNavbar,
+            this.elNavbar,
             {
                 tag: '<div class="mydoc-container"></div>',
                 children: [
-                    $ePath, $eList, $eContent
+                    this.elPath, this.elList, this.elContent
                 ],
             }
         ],
     });
 
-    $eMain.appendTo($options.el);
-
-    // 初始化事件
-
-    const $event = new EventEmitter();
+    this.elMain.appendTo('body');
 
     /**
      * 将 markdown 转换成 html
      *
+     * @link https://marked.js.org/using_pro
      * @return string
      */
-    const md2html = (function() {
-        let renderer = new marked.Renderer();
+    const md2html = (() => {
+        marked.use({
+            walkTokens: token => {
+                if(token.type === 'list' || token.type === 'list_item') {
 
-        renderer.link = function(href, title, text) {
-            href = $options.linkUrl(href);
-
-            if(/^\w+:\/\//.test(href)) {
-                return `<a href="${href}" target="_blank" title="${title ? title : ''}">${text}</a>`;
-            }
-
-            do {
-                let r = href.match(/^(.*?(?:\.md|\/))(?:#(.+))*$/);
-                if (!r) break;
-
-                if(r[2]) {
-                    href = `#${r[1]}?id=${r[2]}`;
-                } else {
-                    href = `#${r[1]}`;
                 }
-            } while(false);
+            }
+        });
 
-            return `<a href="${href}" title="${title ? title : ''}">${text}</a>`;
-        };
+        return (path, text, callback) => {
+            const renderer = new marked.Renderer();
+            renderer.link = function(href, title, text) {
+                href = $options.link(href);
 
-        return (text) => {
-            const lexer = new marked.Lexer();
-            const tokens = lexer.lex(text);
-            return marked.parser(tokens, {
+                if(/^\w+:\/\//.test(href)) {
+                    return `<a href="${href}" target="_blank" title="${title ? title : ''}">${text}</a>`;
+                }
+
+                let r = href.match(/^(\/*)(.*?(?:\.md|\/))(?:#(.+))*$/);
+                if (r) {
+                    let root = Path.createFromString(r[1] === '' ? path.isFile() ? path.dirname() : path.toString() : r[1]);
+                    if(r[3]) {
+                        href = `#${root.join(r[2]).toString()}?id=${r[2]}`;
+                    } else {
+                        href = `#${root.join(r[2]).toString()}`;
+                    }
+                }
+
+                return `<a href="${href}" title="${title ? title : ''}">${text}</a>`;
+            };
+            
+            renderer.listitem = function (text, task, checked) {
+                return `<li class="${task ? 'task-list-item' : 'list-item'}">${text}</li>`;
+            };
+
+            renderer.list = function (body, ordered, start) {
+                const isTask = $(body).children('li>input[type=checkbox]').length > 0;
+                const tag = ordered ? 'ol' : 'ul';
+                const startatt = (ordered && start !== 1) ? (' start="' + start + '"') : '';
+                const className = ` class="${isTask ? 'task-list' : 'list'}"`;
+                return '<' + tag + startatt + className + '>\n' + body + '</' + tag + '>\n';
+            };
+
+            return marked(text, {
                 renderer: renderer,
-                headerIds:true,
+                headerIds: true,
                 headerPrefix: '',
                 langPrefix: 'language-',
-                highlight: function (code) {
-                    return hljs.highlightAuto(code).value;
-                }
-            });
+                highlight: $options.highlight
+            }, callback);
         };
     }) ();
 
@@ -91,8 +128,9 @@ window.MyDoc = function ($options) {
      */
     const scrollTop = (id) => {
         let el = $(document.getElementById(id));
-        if(el.length === 0) return;
-        $eMain.animate({scrollTop: el.offset().top + $eMain.prop('scrollTop')}, 500);
+        if(el.length > 0) {
+            $('html').animate({scrollTop: el.position().top}, 500);
+        }
     };
 
     /**
@@ -100,12 +138,15 @@ window.MyDoc = function ($options) {
      *
      * @param {Path} path
      */
-    const renderList = function (path) {
-        list(path.toString(), 1, false).done(items => {
-            $eList.empty();
+    const renderList = (path) => {
+        this.client.tree(path.toString(), 1, false).done(items => {
+            this.elList.empty();
 
+            items.sort($options.sort);
             items.forEach((item) => {
                 let _path = Path.createFromString(item.path);
+                if(!$options.filter(_path)) return;
+
                 if (_path.basename() === $options.indexFile) return;
 
                 let  li = {
@@ -136,10 +177,12 @@ window.MyDoc = function ($options) {
                     li.children.label.target = '_blank';
                 }
 
-                $eList.append(__(li));
+                this.elList.append(__(li));
             });
 
-            $eList.show();
+            this.elList.children('li').length === 0 ? this.elList.hide() : this.elList.show();
+        }).fail(() => {
+            this.elList.empty().hide();
         });
     };
 
@@ -147,11 +190,12 @@ window.MyDoc = function ($options) {
      * 渲染导航栏
      */
     const renderNavbar = () => {
-        $eNavbar.empty().append('<li><a href="#/"><span class="fa fa-home"></span></a></li>').show();
-
+        this.elNavbar.empty().append('<li><a href="#/"><span class="fa fa-home"></span></a></li>').show();
         const treeEach = function(el, items) {
+            items.sort($options.sort);
             items.forEach((item) => {
                 let _path = Path.createFromString(item.path);
+                if (!$options.filter(_path)) return;
 
                 let eLi = __({
                     tag: 'li',
@@ -171,8 +215,8 @@ window.MyDoc = function ($options) {
             });
         };
 
-        list('/', 2, true).done(items => {
-            treeEach($eNavbar, items);
+        this.client.tree('/', 2, true).done(items => {
+            treeEach(this.elNavbar, items);
         });
     };
 
@@ -185,10 +229,10 @@ window.MyDoc = function ($options) {
         let segments = path.segments();
 
         // 新的路径比原来的短，假设以前是 /a/b/c 现在是 /1/2 需要先把长度对齐（即：把 /c 去掉）
-        $ePath.children(`li.segment:gt(${segments.length - 1})`).remove();
+        this.elPath.children(`li.segment:gt(${segments.length - 1})`).remove();
 
         segments.forEach((segment, i) => {
-            let eOld = $ePath.children(`li.segment:eq(${i})`);
+            let eOld = this.elPath.children(`li.segment:eq(${i})`);
 
             // 路径片段相同，假设以前是 /a/b/c 跳转到 /a/d 那么 /a 是相同的，不予处理
             if(eOld.length > 0 && eOld.data('path').toString() === segment.toString()) {
@@ -230,7 +274,7 @@ window.MyDoc = function ($options) {
                             ul = __({tag: 'ul', class: ['active']});
                             el.after(ul);
 
-                            list(segment.toString(), 1, true).done(items => {
+                            this.client.tree(segment.toString(), 1, true).done(items => {
                                 if(items.length === 0) return;
                                 items.forEach((item) => {
                                     let _path = Path.createFromString(item.path);
@@ -249,7 +293,7 @@ window.MyDoc = function ($options) {
                 });
             }
 
-            eOld.length > 0 ? eOld.replaceWith(__(li)) : $ePath.append(__(li));
+            eOld.length > 0 ? eOld.replaceWith(__(li)) : this.elPath.append(__(li));
         });
     };
 
@@ -262,7 +306,7 @@ window.MyDoc = function ($options) {
      */
     const renderContent = (path, query, text = null) => {
         if (text === null) {
-            readFile(path.isFile() ? path.toString() : path.join($options.indexFile).toString()).done(resp => {
+            this.client.readFile(path.isFile() ? path.toString() : path.join($options.indexFile).toString()).done(resp => {
                 renderContent(path, query, resp);
             }).fail(() => {
                 renderContent(path, query, '');
@@ -271,9 +315,9 @@ window.MyDoc = function ($options) {
             return ;
         }
 
-        $eContent.html(md2html(text));
+        this.elContent.html(md2html(path, text));
 
-        $event.emit('contentReloaded', path, query);
+        this.event.emit('contentReloaded', path, query);
     };
     //
     // const showMdEditor = (options) => {
@@ -310,7 +354,7 @@ window.MyDoc = function ($options) {
     /**
      * 页面加载
      */
-    const load = (function() {
+    const load = (() => {
         let currentPath = null;
 
         return (url) => {
@@ -326,7 +370,7 @@ window.MyDoc = function ($options) {
             }
 
             if (currentPath === null || currentPath.toString() !== path.toString()) {
-                $event.emit('pathChange', path, query);
+                this.event.emit('pathChange', path, query);
                 currentPath = path;
                 return;
             } else if(query.id) {
@@ -346,46 +390,46 @@ window.MyDoc = function ($options) {
 
     // 虚拟事件
 
-    $event.on('initCompleted', () => {
+    this.event.on('initCompleted', () => {
         renderNavbar();
     });
 
-    $event.on('initCompleted', () => {
+    this.event.on('initCompleted', () => {
         loadHash();
     });
 
-    $event.on('pathChange', path => {
+    this.event.on('pathChange', path => {
         document.title = `${$options.title} - ${path.toString()}`;
     });
 
-    $event.on('pathChange', path => {
+    this.event.on('pathChange', path => {
         if (path.isFile()) {
-            $eList.hide();
+            this.elList.empty().hide();
         }
     });
 
-    $event.on('pathChange', path => {
+    this.event.on('pathChange', path => {
         if (path.isDirectory()) {
             renderList(path);
         }
     });
 
-    $event.on('pathChange', (path, query) => {
+    this.event.on('pathChange', (path, query) => {
         renderContent(path, query);
     });
 
-    $event.on('pathChange', path => {
+    this.event.on('pathChange', path => {
         renderPath(path);
     });
 
-    $event.on('contentReloaded', (path, query) => {
+    this.event.on('contentReloaded', (path, query) => {
         if (query.id) {
             scrollTop(query.id);
         }
     });
 
-    // $event.on('pathChange', pathObj => {
-    //     $ePath.children('li.tools').remove();
+    // this.event.on('pathChange', pathObj => {
+    //     this.elPath.children('li.tools').remove();
     //
     //     const ePathToolbar = __({tag: 'ul'});
     //     __({
@@ -400,7 +444,7 @@ window.MyDoc = function ($options) {
     //             },
     //             ePathToolbar
     //         ]
-    //     }).appendTo($ePath);
+    //     }).appendTo(this.elPath);
     //
     //
     //     if (pathObj.isFile() && pathObj.ext() === 'md') {
@@ -422,7 +466,7 @@ window.MyDoc = function ($options) {
     //     }
     //
     //     // if (pathObj.isDirectory()) {
-    //     //     $ePathToolbar.append(__({
+    //     //     this.elPathToolbar.append(__({
     //     //         tag: 'li',
     //     //         html: {tag: 'span', class: ['fa', 'fa-folder-o']},
     //     //         attr: {
@@ -513,8 +557,8 @@ window.MyDoc = function ($options) {
     //     //     });
     //     // }
     //     //
-    //     // $ePath.children('.tool').remove();
-    //     // $ePath.append(__({
+    //     // this.elPath.children('.tool').remove();
+    //     // this.elPath.append(__({
     //     //     tag: 'li',
     //     //     class: ['tool'],
     //     //     children: [
@@ -529,12 +573,12 @@ window.MyDoc = function ($options) {
     $(window).on('hashchange', () => {
         loadHash();
     });
-    //
-    // $ePath.on('mouseleave', 'li.segment', function() {
+
+    // this.elPath.on('mouseleave', 'li.segment', function() {
     //     $(this).children('ul').hide();
     // })
     //
-    // $ePath.on('click', 'li.segment>span', function() {
+    // this.elPath.on('click', 'li.segment>span', function() {
     //     let eBtn = $(this);
     //     let ePanel = eBtn.siblings('ul');
     //
@@ -546,7 +590,7 @@ window.MyDoc = function ($options) {
     //     ePanel = __({tag: 'ul', class: ['active']});
     //     eBtn.after(ePanel);
     //
-    //     list(eBtn.data('path').toString(), 1, true).done(items => {
+    //     tree(eBtn.data('path').toString(), 1, true).done(items => {
     //         if(items.length === 0) return;
     //         items.forEach((item) => {
     //             let _path = Path.createFromString(item.path);
@@ -563,8 +607,8 @@ window.MyDoc = function ($options) {
     // });
 
     $options.plugins.forEach(plugin => {
-        plugin(this, $event, $eMain);
+        plugin(this);
     });
 
-    $event.emit('initCompleted');
+    this.event.emit('initCompleted');
 };
