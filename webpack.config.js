@@ -45,4 +45,21 @@ const mydocPluginContentIndex = {
     }
 };
 
-module.exports = [mydoc, mydocPluginContentIndex];
+const mydocPluginEditor = {
+    target: "web",
+    mode: "production",
+    entry: [
+        "./mydoc/plugins/editor/index.js",
+    ],
+    output: {
+        path: path.resolve(__dirname, "dist/mydoc/plugins"),
+        filename: "editor.min.js"
+    },
+    module: {
+        rules: [
+            {test: /\.css$/, use: ['style-loader', 'css-loader']}
+        ]
+    }
+};
+
+module.exports = [mydoc, mydocPluginContentIndex, mydocPluginEditor];

@@ -1,0 +1,56 @@
+.mydoc-tools {
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    background-color: #6bb56b;
+    border-radius: 20px;
+    padding:5px;
+    line-height: 20px;
+}
+
+.mydoc-tools>.toggle>.fa:before{
+    content:"\f106"
+}
+
+.mydoc-tools>ul>li,
+.mydoc-tools>.toggle {
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    display: inline-block;
+    color: white;
+    cursor: pointer;
+}
+
+.mydoc-tools:hover>ul {
+    display:block;
+}
+
+.mydoc-tools>ul {
+    overflow: hidden;
+    list-style-type: none;
+    margin:0;
+    padding:0;
+    display: none;
+}
+
+.mydoc-tools>ul>li {
+
+}
+
+.mydoc-editor {
+    position: absolute;
+    z-index: 10000;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: white;
+    overflow: hidden;
+}
+
+.mydoc-editor-container {
+    width: 100vw;
+    height: 100vh;
+}

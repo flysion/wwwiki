@@ -1,4 +1,4 @@
-import __ from './../../../lib/create_element';
+import createElement from './../../../lib/createElement';
 import './index.css';
 
 function getContentIndexTree(el) {
@@ -64,10 +64,10 @@ window.ContentIndex = function($options) {
     }, $options);
 
     /**
-     * @param {MyDoc}
+     * @param {MyDoc} $core
      */
     return ($core) => {
-        const $el = __({
+        const $el = createElement({
             tag: 'div',
             class: ['mydoc-content-index', $options.float ? 'float' : ''],
         });
@@ -114,7 +114,7 @@ window.ContentIndex = function($options) {
             }
         });
 
-        // 监听滚动位置
+        // 高亮当前滚动位置
 
         let pid = 0;
         $(window).on('scroll', e => {
@@ -125,9 +125,9 @@ window.ContentIndex = function($options) {
         const render = (options, path, el, items, prefix = '', depth = 1) => {
             if (options.maxDepth > 0 && depth > options.maxDepth) return;
 
-            let ul = __({tag: 'ul', class: [`index-${depth}`]}).appendTo(el);
+            let ul = createElement({tag: 'ul', class: [`index-${depth}`]}).appendTo(el);
             items.forEach((item, i) => {
-                let li = __({
+                let li = createElement({
                     tag: 'li',
                     data: {
                         target: item.el
@@ -144,11 +144,11 @@ window.ContentIndex = function($options) {
             });
         };
 
-        $core.event.on('contentReloaded', (path) => {
-            $el.empty();
+        $core.event.on('contentLoaded', () => {
+            $el.children('ul').remove();
 
             let tree = getContentIndexTree($core.elContent);
-            let options = $.extend($options, $options.getOptions(path, tree));
+            let options = $.extend($options, $options.getOptions($core.path, tree));
             // 跳过最顶级标题
             if (options.skipTop) tree = tree.length === 1 ? tree[0].children : tree;
             if (tree.length === 0) {
@@ -156,7 +156,7 @@ window.ContentIndex = function($options) {
                 return;
             }
 
-            render(options, path, $el, tree);
+            render(options, $core.path, $el, tree);
             highlightCurrent();
 
             if (options.hide) {
@@ -172,7 +172,7 @@ window.ContentIndex = function($options) {
             let show = true;
 
             // 是否在目录下显示
-            if (!options.allowDirectory && path.isDirectory()) {
+            if (!options.allowDirectory && $core.path.isDirectory()) {
                 show = false;
             }
 

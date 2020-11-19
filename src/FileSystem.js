@@ -82,18 +82,50 @@ class FileSystem {
         fs.rmdir(this.resolve(path), options, callback);
     }
 
+    /**
+     * 创建目录
+     *
+     * @see fs.mkdir
+     * @param path
+     * @param options
+     * @param callback
+     */
     mkdir(path, options, callback) {
         fs.mkdir(this.resolve(path), options, callback);
     }
 
+    /**
+     * 删除文件
+     *
+     * @see fs.unlink
+     * @param path
+     * @param callback
+     */
     unlink(path, callback) {
         fs.unlink(this.resolve(path), callback);
     }
 
+    /**
+     * 重命名
+     *
+     * @see fs.rename
+     * @param path
+     * @param new_path
+     * @param callback
+     */
     rename(path, new_path, callback) {
         fs.unlink(this.resolve(path), this.resolve(new_path), callback);
     }
 
+    /**
+     * 写入文件
+     *
+     * @see fs.writeFile
+     * @param path
+     * @param content
+     * @param options
+     * @param callback
+     */
     writeFile(path, content, options, callback) {
         fs.writeFile(this.resolve(path), content, options, callback);
     }
