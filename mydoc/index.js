@@ -93,7 +93,7 @@ window.MyDoc = function (options) {
      * @link https://marked.js.org/using_pro
      * @return string
      */
-    const md2html = (() => {
+    const markdown = (() => {
         marked.use({
             walkTokens: token => {
                 if(token.type === 'list' || token.type === 'list_item') {
@@ -111,7 +111,7 @@ window.MyDoc = function (options) {
                     return `<a href="${href}" target="_blank" title="${title ? title : ''}" class="outer">${text}</a>`;
                 }
 
-                let r = href.match(/^(\/*)(.*?(?:\.md|\/))(?:#(.+))*$/);
+                let r = href.match(/^(\/*)(.+?(?:(\.\w+)|\/))(?:#(.+))*$/);
                 if (r) {
                     let root = Path.createFromString(r[1] === '' ? path.isFile() ? path.dirname() : path.toString() : r[1]);
                     if(r[3]) {
@@ -175,7 +175,7 @@ window.MyDoc = function (options) {
             this.event.emit('contentLoaded');
         },
         set: value => {
-            this.elContent.html(md2html(this.path, value));
+            this.elContent.html(markdown(this.path, value));
         }
     });
 
@@ -206,13 +206,9 @@ window.MyDoc = function (options) {
                 if(path.isDirectory()) {
                     li.class.push('folder');
                     label.href = `#${path.toString()}`;
-                } else if (path.ext() === 'md') {
-                    li.class.push('file', `file-${path.ext()}`);
-                    label.href = `#${path.toString()}`;
                 } else {
                     li.class.push('file', `file-${path.ext()}`);
-                    label.href = path.toString();
-                    label.target = '_blank';
+                    label.href = `#${path.toString()}`;
                 }
 
                 this.elList.append(createElement(li));

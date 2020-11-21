@@ -36,7 +36,7 @@ window.Editor = function($options) {
             ]
         }).appendTo('body');
 
-        $(document).on('click', 'a', e => {console.log(e);
+        $(document).on('click', 'a', e => {
             if (!e.ctrlKey) return;
             let el = $(e.target);
             let href = el.attr('href');
