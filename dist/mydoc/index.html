@@ -19,7 +19,7 @@
 
     <style type="text/css">
         body {margin:0;padding:0;color:#333;font-family:'微软雅黑';line-height:26px;}
-        body a {color:#6bb56b;}
+        body a {color:#6bb56b; text-decoration: none;}
 
         .mydoc-navbar {background-color:#6bb56b;position:fixed;width:100%;z-index:9999;top:0;}
         .mydoc-navbar:after {content:"";clear:both;display:block;}
@@ -113,10 +113,10 @@
                     editor: {
                         automaticLayout: true, /*自适应大小*/
                         folding: false, /* 代码可折叠 */
-                        minimap: { /* 代码地图 https://microsoft.github.io/monaco-editor/api/interfaces/monaco.editor.ieditorminimapoptions.html */
+                        minimap: { /* 代码地图 */
                             enabled: false
                         },
-                        // lineNumbers: false,
+                        lineNumbers: false,
                         wordWrap: "on"
                     },
                     languages: {

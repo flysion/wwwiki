@@ -82,33 +82,9 @@
       <file leaf-file-name="index.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/mydoc/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="557">
-              <caret line="119" column="38" lean-forward="true" selection-start-line="119" selection-start-column="38" selection-end-line="119" selection-end-column="38" />
+            <state relative-caret-position="646">
+              <caret line="131" column="26" lean-forward="true" selection-start-line="131" selection-start-column="26" selection-end-line="131" selection-end-column="26" />
               <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="index.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/mydoc/index.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="673">
-              <caret line="393" column="44" lean-forward="true" selection-start-line="393" selection-start-column="44" selection-end-line="393" selection-end-column="44" />
-              <folding>
-                <element signature="e#0#45#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="index.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/mydoc/plugins/editor/index.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="136">
-              <caret line="8" column="0" lean-forward="false" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
-              <folding>
-                <element signature="e#0#57#0" expanded="true" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -202,7 +178,6 @@
         <option value="$PROJECT_DIR$/mydoc/app.js" />
         <option value="$PROJECT_DIR$/mydoc/main.css" />
         <option value="$PROJECT_DIR$/bin/docsite" />
-        <option value="$PROJECT_DIR$/dist/mydoc/index.html" />
         <option value="$PROJECT_DIR$/lib/Dispatcher.js" />
         <option value="$PROJECT_DIR$/lib/helpers.js" />
         <option value="$PROJECT_DIR$/lib/isarray.js" />
@@ -233,8 +208,9 @@
         <option value="$PROJECT_DIR$/lib/Proxy.ts" />
         <option value="$PROJECT_DIR$/webpack.config.js" />
         <option value="$PROJECT_DIR$/lib/HttpClient.js" />
-        <option value="$PROJECT_DIR$/mydoc/index.js" />
         <option value="$PROJECT_DIR$/mydoc/plugins/editor/index.js" />
+        <option value="$PROJECT_DIR$/mydoc/index.js" />
+        <option value="$PROJECT_DIR$/dist/mydoc/index.html" />
         <option value="$PROJECT_DIR$/mydoc/index.html" />
       </list>
     </option>
@@ -299,32 +275,19 @@
             <path>
               <item name="docsite" type="b2602c69:ProjectViewProjectNode" />
               <item name="docsite" type="462c0819:PsiDirectoryNode" />
+              <item name="dist" type="462c0819:PsiDirectoryNode" />
+              <item name="mydoc" type="462c0819:PsiDirectoryNode" />
+              <item name="plugins" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="docsite" type="b2602c69:ProjectViewProjectNode" />
+              <item name="docsite" type="462c0819:PsiDirectoryNode" />
               <item name="lib" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="docsite" type="b2602c69:ProjectViewProjectNode" />
               <item name="docsite" type="462c0819:PsiDirectoryNode" />
               <item name="mydoc" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="docsite" type="b2602c69:ProjectViewProjectNode" />
-              <item name="docsite" type="462c0819:PsiDirectoryNode" />
-              <item name="mydoc" type="462c0819:PsiDirectoryNode" />
-              <item name="plugins" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="docsite" type="b2602c69:ProjectViewProjectNode" />
-              <item name="docsite" type="462c0819:PsiDirectoryNode" />
-              <item name="mydoc" type="462c0819:PsiDirectoryNode" />
-              <item name="plugins" type="462c0819:PsiDirectoryNode" />
-              <item name="content_index" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="docsite" type="b2602c69:ProjectViewProjectNode" />
-              <item name="docsite" type="462c0819:PsiDirectoryNode" />
-              <item name="mydoc" type="462c0819:PsiDirectoryNode" />
-              <item name="plugins" type="462c0819:PsiDirectoryNode" />
-              <item name="editor" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="docsite" type="b2602c69:ProjectViewProjectNode" />
@@ -391,12 +354,12 @@
       <workItem from="1604483802954" duration="13194000" />
       <workItem from="1604564924097" duration="63519000" />
       <workItem from="1604983335876" duration="20855000" />
-      <workItem from="1605615570474" duration="60370000" />
+      <workItem from="1605615570474" duration="67025000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="305602000" />
+    <option name="totallyTimeSpent" value="312257000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -628,14 +591,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/dist/mydoc/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-497">
-          <caret line="14" column="0" lean-forward="true" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/lib/loadScript.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -734,16 +689,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/mydoc/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="673">
-          <caret line="393" column="44" lean-forward="true" selection-start-line="393" selection-start-column="44" selection-end-line="393" selection-end-column="44" />
-          <folding>
-            <element signature="e#0#45#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/mydoc/plugins/editor/index.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="136">
@@ -754,10 +699,28 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/mydoc/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="110" column="104" lean-forward="false" selection-start-line="110" selection-start-column="104" selection-end-line="110" selection-end-column="104" />
+          <folding>
+            <element signature="e#0#45#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dist/mydoc/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="612">
+          <caret line="96" column="0" lean-forward="true" selection-start-line="96" selection-start-column="0" selection-end-line="96" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/mydoc/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="557">
-          <caret line="119" column="38" lean-forward="true" selection-start-line="119" selection-start-column="38" selection-end-line="119" selection-end-column="38" />
+        <state relative-caret-position="646">
+          <caret line="131" column="26" lean-forward="true" selection-start-line="131" selection-start-column="26" selection-end-line="131" selection-end-column="26" />
           <folding />
         </state>
       </provider>

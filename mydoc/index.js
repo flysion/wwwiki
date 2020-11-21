@@ -108,7 +108,7 @@ window.MyDoc = function (options) {
                 href = this.options.link(href);
 
                 if(/^\w+:\/\//.test(href)) {
-                    return `<a href="${href}" target="_blank" title="${title ? title : ''}">${text}</a>`;
+                    return `<a href="${href}" target="_blank" title="${title ? title : ''}" class="outer">${text}</a>`;
                 }
 
                 let r = href.match(/^(\/*)(.*?(?:\.md|\/))(?:#(.+))*$/);
