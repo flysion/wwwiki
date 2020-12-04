@@ -4,6 +4,7 @@ import EventEmitter from 'events';
 import marked from 'marked';
 import createElement from "../lib/createElement";
 import Proxy from "../lib/Proxy"
+import isCallable from "../lib/isCallable";
 
 const queryString = require('query-string');
 
@@ -16,7 +17,7 @@ window.MyDoc = function (options) {
         plugins: [
 
         ],
-        link: url => { return url; },
+        linkFormat: url => { return url; },
         filter: path => {
             return true;
         },
@@ -104,32 +105,59 @@ window.MyDoc = function (options) {
 
         return (path, text, callback) => {
             const renderer = new marked.Renderer();
-            renderer.link = (href, title, text) => {
-                href = this.options.link(href);
 
+            renderer.link = (href, title, text) => {
                 if(/^\w+:\/\//.test(href)) {
-                    return `<a href="${href}" target="_blank" title="${title ? title : ''}" class="outer">${text}</a>`;
+                    return `<a href="${href}" target="_blank"${title ? `title="${title}"` : ''}" class="outer-link">${text}</a>`;
                 }
 
-                let r = href.match(/^(\/*)(.+?(?:(\.\w+)|\/))(?:#(.+))*$/);
-                if (r) {
-                    let root = Path.createFromString(r[1] === '' ? path.isFile() ? path.dirname() : path.toString() : r[1]);
-                    if(r[3]) {
-                        href = `#${root.join(r[2]).toString()}?id=${r[2]}`;
+                href = this.options.linkFormat(href);
+
+                let results = href.match(/^(\/*)(.+?)(?:#(.+))*$/);
+                if (results) {
+                    let root = Path.createFromString(results[1] === '' ? path.isFile() ? path.dirname() : path.toString() : results[1]);
+                    if(results[3]) {
+                        href = `/#!${root.join(results[2]).toString()}?id=${results[3]}`;
                     } else {
-                        href = `#${root.join(r[2]).toString()}`;
+                        href = `/#!${root.join(results[2]).toString()}`;
                     }
                 }
 
-                return `<a href="${href}" title="${title ? title : ''}">${text}</a>`;
+                return `<a href="${href}"${title ? `title="${title}"` : ''}">${text}</a>`;
             };
 
-            renderer.listitem = function (text, task, checked) {
+            renderer._image = renderer.image;
+            renderer.image = (href, title, text) => {
+                if(/^\w+:\/\//.test(href)) {
+                    return renderer._image(href, title, text);
+                }
+
+                href = this.options.linkFormat(href);
+
+                let results = href.match(/^(\/*)(.+?)$/);
+                if (results) {
+                    let root = Path.createFromString(results[1] === '' ? path.isFile() ? path.dirname() : path.toString() : results[1]);
+                    href = root.join(results[2]).toString();
+                }
+
+                return renderer._image(href, title, text);
+            };
+
+            renderer._code = renderer.code;
+            renderer.code = (code, lang) => {
+                if (lang === 'mermaid') {
+                    return `<div class="mermaid">${code}</div>`;
+                } else {
+                    return renderer._code(code, lang);
+                }
+            };
+
+            renderer.listitem =  (text, task, checked) => {
                 return `<li class="${task ? 'task-list-item' : 'list-item'}">${text}</li>`;
             };
 
-            renderer.list = function (body, ordered, start) {
-                const isTask = $(body).children('li>input[type=checkbox]').length > 0;
+            renderer.list = (body, ordered, start) => {
+                const isTask = $(body).is('li.task-list-item');
                 const tag = ordered ? 'ol' : 'ul';
                 const startatt = (ordered && start !== 1) ? (' start="' + start + '"') : '';
                 const className = ` class="${isTask ? 'task-list' : 'list'}"`;
@@ -175,7 +203,15 @@ window.MyDoc = function (options) {
             this.event.emit('contentLoaded');
         },
         set: value => {
-            this.elContent.html(markdown(this.path, value));
+            if (this.path.isDirectory() || this.path.ext() === 'md') {
+                this.elContent.html(markdown(this.path, value));
+            } else if(this.path.ext() === 'py') {
+                this.elContent.html(markdown(this.path, '```python\n' + value + '\n```'));
+            } else if(this.path.ext() === 'php') {
+                this.elContent.html(markdown(this.path, '```php\n' + value + '\n```'));
+            } else if(this.path.ext() === 'sh') {
+                this.elContent.html(markdown(this.path, '```bash\n' + value + '\n```'));
+            }
         }
     });
 
@@ -205,10 +241,10 @@ window.MyDoc = function (options) {
 
                 if(path.isDirectory()) {
                     li.class.push('folder');
-                    label.href = `#${path.toString()}`;
+                    label.href = `/#!${path.toString()}`;
                 } else {
                     li.class.push('file', `file-${path.ext()}`);
-                    label.href = `#${path.toString()}`;
+                    label.href = `/#!${path.toString()}`;
                 }
 
                 this.elList.append(createElement(li));
@@ -218,7 +254,7 @@ window.MyDoc = function (options) {
 
     proxy.defineProperty('navList', {
         set: value => {
-            this.elNavbar.empty().append('<li><a href="#/"><span class="fa fa-home"></span></a></li>').show();
+            this.elNavbar.empty().append('<li><a href="/#!/"><span class="fa fa-home"></span></a></li>').show();
 
             const treeEach = (el, items) => {
                 items.forEach((item) => {
@@ -229,7 +265,7 @@ window.MyDoc = function (options) {
                         children: [
                             {
                                 tag: 'a',
-                                href: `#${path.toString()}`,
+                                href: `/#!${path.toString()}`,
                                 text: path.basename()
                             },
                         ]
@@ -254,7 +290,13 @@ window.MyDoc = function (options) {
         let query = queryString.parse(results[2], {arrayFormat: 'bracket'});
 
         if (path.isFile() && path.ext() !== 'md') {
-            window.location.href = url;
+            if (this.path) {
+                window.open(url, '_blank');
+                window.history.back();
+            } else {
+                window.location.href = url;
+            }
+
             return;
         }
 
@@ -280,7 +322,11 @@ window.MyDoc = function (options) {
     });
 
     this.event.on('init', () => {
-        this.load(window.location.hash === '' ? '/' : decodeURI(window.location.hash.substr(1)));
+        this.load(window.location.hash === '' ? '/' : decodeURI(window.location.hash.substr(2)));
+    });
+
+    this.event.on('contentLoaded', () => {
+        mermaid.contentLoaded();
     });
 
     this.event.on('pathChanged', () => {
@@ -331,7 +377,7 @@ window.MyDoc = function (options) {
                         text: i === 0 ? "" : segment.basename(),
                         html: i === 0 ? {tag: 'span', class: ['fa', 'fa-home']} : null,
                         class: i === 0 ? ['root'] : ['label'],
-                        href: `#${segment.toString()}`
+                        href: `/#!${segment.toString()}`
                     }
                 ],
                 on: {
@@ -355,13 +401,13 @@ window.MyDoc = function (options) {
                     this.client.tree(segment.toString(), 1, true).done(items => {
                         if(items.length === 0) return;
                         items.forEach((item) => {
-                            let _path = Path.createFromString(item.path);
+                            let path = Path.createFromString(item.path);
                             ul.append(createElement({
                                 tag: 'li',
                                 html: {
                                     tag: 'a',
-                                    text: _path.basename(),
-                                    href: `#${_path.toString()}`,
+                                    text: path.basename(),
+                                    href: `/#!${path.toString()}`,
                                 }
                             }));
                         });
@@ -382,7 +428,7 @@ window.MyDoc = function (options) {
     // hash 变更事件
 
     $(window).on('hashchange', (e) => {
-        this.load(window.location.hash === '' ? '/' : decodeURI(window.location.hash.substr(1)));
+        this.load(window.location.hash === '' ? '/' : decodeURI(window.location.hash.substr(2)));
     });
 
     // 初始化插件

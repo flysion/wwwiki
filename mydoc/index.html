@@ -17,6 +17,9 @@
     <script type="text/javascript" src="/docsite/mydoc/plugins/content_index.min.js"></script>
     <script type="text/javascript" src="/docsite/mydoc/plugins/editor.min.js"></script>
 
+    <!-- https://mermaid-js.github.io/mermaid/#/ -->
+    <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+
     <style type="text/css">
         body {margin:0;padding:0;color:#333;font-family:'微软雅黑';line-height:26px;}
         body a {color:#6bb56b; text-decoration: none;}
@@ -82,28 +85,37 @@
         .mydoc-content>ul,
         .mydoc-content>ol,
         .mydoc-content>pre {margin-bottom:0;}
-        .mydoc-content table {border-collapse:collapse;border-spacing:0;width:100%; margin-top:10px; margin: 1em 0;}
+        .mydoc-content table {border-collapse:collapse;border-spacing:0;width:100%;margin:10px 0;}
         .mydoc-content table td,
         .mydoc-content table th {border:1px solid #e3e3e3;padding:5px;}
         .mydoc-content table thead {background-color:#eee;}
-        .mydoc-content code {padding:0 3px;margin:0 3px;background-color:#ffd4d4;border-radius:3px;font-family:"Consolas";}
-        .mydoc-content pre>code  {padding:0;margin:0;background-color:transparent;border:0;border-radius:0;}
-        .mydoc-content pre {padding:10px;overflow:auto;background-color:#eee;}
+        .mydoc-content code {padding:0 3px;margin:0 3px;background-color:#ffd4d4;border-radius:3px;font-family:Consolas,Monaco,Menlo,"Source Code Pro";}
+        .mydoc-content pre>code {padding:0;margin:0;background-color:transparent;border:0;border-radius:0;}
+        .mydoc-content pre>code>.line-number {list-style-type:none; padding:0 8px;float:left;text-align:right;margin:0 5px 0 0;background-color:#ddd;color:#aaa;font-style:italic;user-select:none;}
+        .mydoc-content pre {padding:0 10px 0 0;overflow:auto;background-color:#eee;line-height:20px;}
         .mydoc-content .list {padding-left: 25px;}
         .mydoc-content .task-list {list-style-type:none;padding-left:0;}
         .mydoc-content .task-list>li {position: relative; padding-left: 25px;}
         .mydoc-content .task-list>li>input[type=checkbox] {position:absolute;left:0;top:6px;margin:0;}
         .mydoc-content h2 {border-bottom: 1px solid #eee;padding-bottom:7px;}
+        .mydoc-content img {max-width:100%;}
+        .mydoc-content blockquote {border-left:5px solid #d4d4d4;padding-left:5px;margin:0;}
+        .mydoc-content li>p {margin:0;}
 
         @media screen and (max-width:900px) {
             .mydoc-container {width:auto;}
             .mydoc-path {margin-left:-10px; margin-right:-10px;}
             .mydoc-navbar>li>a {padding:0 5px;}
         }
+
+        .mermaid {border:1px solid #cccccc; text-align: center;}
+        .mermaid svg {height: unset;}
     </style>
 </head>
 <body>
 <script type="text/javascript">
+    mermaid.initialize({startOnLoad:true});
+
     $(document).ready(function() {
         let mydoc = new MyDoc({
             plugins: [
@@ -129,29 +141,33 @@
                     }
                 })
             ],
-            link: url => {
-                if (url.substr(0, 6) === '/docs/') {
-                    return url.substr(5);
+            linkFormat: link => {
+                if (link.substr(0, 6) === '/docs/') {
+                    return ulinkrl.substr(5);
                 }
 
-                return url;
+                return link;
             },
-
             filter: path => {
                 let pathStr = path.toString();
                 return pathStr !== '/.git/' && pathStr !== '/index.html';
             },
             highlight: function (code, lang) {
+                let el = '';
+                for(let i = 1; i <= code.split('\n').length; i++) {
+                    el += `<li>${i}</li>`;
+                }
+
                 if (lang) {
                     try {
-                        return  hljs.highlight(lang, code).value;
+                        return `<ul class="line-number">${el}</ul><div class="code">${hljs.highlight(lang, code).value}</div>`;
                     } catch (err) {
                         console.error(err);
-                        return  hljs.highlightAuto(code).value;
+                        return `<ul class="line-number">${el}</ul><div class="code">${hljs.highlightAuto(code).value}</div>`;
                     }
                 }
 
-                return code;
+                return `<ul class="line-number">${el}</ul><div class="code">${code}</div>`;
             }
         });
     });

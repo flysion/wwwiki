@@ -36,6 +36,8 @@ class FileSystem {
             let results = [];
 
             fs.readdirSync(this.resolve(dir)).forEach(file => {
+                if (file[0] === '.' || file[0] === '~') return;
+
                 let abspath = this.resolve(dir, file);
                 let fullpath = path.join(dir, file);
 

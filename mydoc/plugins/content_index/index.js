@@ -134,7 +134,7 @@ window.ContentIndex = function($options) {
                     },
                     children: [
                         {tag: 'span', class: 'num', text: `${prefix}${i+1}.`},
-                        {tag: 'a', href:`#${path.toString()}?id=${item.id}`, text: item.title},
+                        {tag: 'a', href:`#!${path.toString()}?id=${item.id}`, text: item.title},
                     ]
                 }).appendTo(ul);
 
