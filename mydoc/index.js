@@ -325,10 +325,6 @@ window.MyDoc = function (options) {
         this.load(window.location.hash === '' ? '/' : decodeURI(window.location.hash.substr(2)));
     });
 
-    this.event.on('contentLoaded', () => {
-        mermaid.contentLoaded();
-    });
-
     this.event.on('pathChanged', () => {
         document.title = `${this.options.title} - ${this.path.toString()}`;
     });
